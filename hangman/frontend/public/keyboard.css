@@ -1,0 +1,28 @@
+#keyboard {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 75vw;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+}
+
+#key {
+	width: 5vw;
+	height: 5vw;
+	background-color: azure;
+
+	border: 2px solid black;
+	border-radius: 10px;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+	font-size: large;
+	font-weight: 900;
+	color: black;
+
+	margin: 0.5vw;
+}
