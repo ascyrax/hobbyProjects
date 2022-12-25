@@ -1,5 +1,5 @@
 import { useState } from "react";
-export default function useKeyBoard(wordToGuess, setState) {
+export default function useKeyBoard(wordToGuess, setKeyBoardState) {
 	let [charsTopRow, setCharsTopRow] = useState([
 		"Q",
 		"W",
@@ -36,9 +36,7 @@ export default function useKeyBoard(wordToGuess, setState) {
 	]);
 	let [colors, setColors] = useState(["neutral", "green", "yellow", "grey"]);
 
-	let [mp, setMp] = useState(new Map());
-
-	setState(mp);
+	let mp = new Map();
 
 	for (let i = 0; i < charsTopRow.length; i++) {
 		mp.set(charsTopRow[i], { keyChar: charsTopRow[i], keyColor: colors[0] });
@@ -87,7 +85,8 @@ export default function useKeyBoard(wordToGuess, setState) {
 				mp.set(keyChar, { keyChar: keyChar, keyColor: "green" });
 			}
 		}
-		console.log(mp);
+
+		setKeyBoardState(mp);
 	}
 
 	return { mp, charsTopRow, charsMidRow, charsBottomRow, handleClick };

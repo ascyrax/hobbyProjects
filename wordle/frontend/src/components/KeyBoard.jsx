@@ -5,19 +5,15 @@ import useKeyBoard from "../hooks/useKeyBoard";
 import "../../public/keyboard.css";
 
 export default function KeyBoard(props) {
-	let [state, setState] = useState();
+	let [keyBoardState, setKeyBoardState] = useState();
 	let { mp, charsTopRow, charsMidRow, charsBottomRow, handleClick } =
-		useKeyBoard(props.wordToGuess, setState);
-
-	useEffect(() => {
-		console.log("mp changed");
-	}, [state]);
+		useKeyBoard(props.wordToGuess, setKeyBoardState);
 
 	return (
 		<div id="keyboard">
 			<div id="keyRow">
 				{charsTopRow.map((el) => {
-					let keyObj = mp.get(el);
+					let keyObj = (keyBoardState ? keyBoardState : mp).get(el);
 					return (
 						<Key
 							key={el}
@@ -30,7 +26,8 @@ export default function KeyBoard(props) {
 			</div>
 			<div id="keyRow">
 				{charsMidRow.map((el) => {
-					let keyObj = mp.get(el);
+					let keyObj = (keyBoardState ? keyBoardState : mp).get(el);
+
 					return (
 						<Key
 							key={el}
@@ -43,7 +40,8 @@ export default function KeyBoard(props) {
 			</div>
 			<div id="keyRow">
 				{charsBottomRow.map((el) => {
-					let keyObj = mp.get(el);
+					let keyObj = (keyBoardState ? keyBoardState : mp).get(el);
+
 					return (
 						<Key
 							key={el}
