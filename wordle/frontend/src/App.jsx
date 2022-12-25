@@ -1,5 +1,6 @@
 import React from "react";
-import KeyBoard from "../components/KeyBoard";
+
+import Wordle from "./components/Wordle";
 
 import words from "../data/words.json";
 
@@ -9,11 +10,9 @@ function App() {
 		words[index].toUpperCase()
 	);
 
-	console.log(wordToGuess);
-
 	return (
 		<div className="App">
-			<KeyBoard wordToGuess={wordToGuess} />
+			<Wordle wordToGuess={wordToGuess} />
 		</div>
 	);
 }
