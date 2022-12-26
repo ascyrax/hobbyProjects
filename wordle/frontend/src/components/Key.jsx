@@ -3,8 +3,8 @@ import useKeyBoard from "../hooks/useKeyBoard";
 export default function Key(props) {
 	return (
 		<div
-			id="key"
-			className={props.keyColor}
+			id={props.keyChar}
+			className={props.keyColor + " " + "key"}
 			onClick={(e) => {
 				props.handleClick(e, props.keyChar);
 			}}
