@@ -11,8 +11,15 @@ import { useState } from "react";
 // 	console.log(temp);
 // }
 
-export default function useKeyBoard(wordToGuess, setKeyBoardState, prevMp) {
-	// console.log("useKeyBoard recalled");
+export default function useKeyBoard(
+	wordToGuess,
+	setKeyBoardState,
+	prevMp,
+	userGuessPrev,
+	setUserGuess,
+	setGrid
+) {
+	let [guessNo, setGuessNo] = useState(0);
 
 	let [charsTopRow, setCharsTopRow] = useState([
 		"Q",
@@ -78,7 +85,9 @@ export default function useKeyBoard(wordToGuess, setKeyBoardState, prevMp) {
 	}
 
 	let userGuess = [];
-	// console.log(userGuess);
+	for (let i = 0; i < userGuessPrev.length; i++)
+		userGuess.push(userGuessPrev[i]);
+
 	// HANDLING THE KEY CLICKS
 	function handleClick(event, keyChar) {
 		keyChar = keyChar.toUpperCase();
@@ -87,6 +96,7 @@ export default function useKeyBoard(wordToGuess, setKeyBoardState, prevMp) {
 			if (userGuess.length > 0) {
 				userGuess.pop();
 			}
+			setUserGuess(userGuess);
 			console.log(userGuess);
 			return;
 		}
@@ -97,16 +107,18 @@ export default function useKeyBoard(wordToGuess, setKeyBoardState, prevMp) {
 		if (keyChar === "ENTER") {
 			if (userGuess.length < wordToGuess.length) {
 				console.log("enter correct no of chars before submitting");
-				return;
 			} else {
 				handleSubmit();
 			}
+			return;
 		}
 
 		if (userGuess.length === wordToGuess.length) return;
 		//    [ TODO ]    IF GAME IS OVER => RETURN
 		userGuess.push(keyChar);
-		console.log(userGuess);
+		// console.log(userGuess);
+		setUserGuess(userGuess);
+		handleGridInput();
 	}
 
 	// HANDLING THE SUBMIT
@@ -142,9 +154,78 @@ export default function useKeyBoard(wordToGuess, setKeyBoardState, prevMp) {
 				mp.set(keyChar, { keyChar: keyChar, keyColor: "grey" });
 			}
 		}
+		handleGridSubmit();
+
+		if (userGuessString == wordToGuess) {
+			alert("dobroye utra");
+			return;
+		}
+
+		setUserGuess([]);
+		setGuessNo((prev) => prev + 1);
 		setKeyBoardState(mp);
-		// userGuess = [];
+		if (guessNo == 5) alert("kitanai");
 	}
 
-	return { mp, charsTopRow, charsMidRow, charsBottomRow, handleClick };
+	function handleGridSubmit() {
+		setGrid((prevGrid) => {
+			let tempGrid = [];
+
+			for (let i = 0; i < prevGrid.length; i++) {
+				let tempRow = [];
+				for (let j = 0; j < prevGrid[0].length; j++) {
+					tempRow.push(prevGrid[i][j]);
+				}
+				tempGrid.push(tempRow);
+			}
+			for (let j = 0; j < prevGrid[0].length; j++) {
+				tempGrid[guessNo][j] = {
+					keyChar: prevGrid[guessNo][j].keyChar,
+					keyColor: findColor(j),
+				};
+			}
+			return tempGrid;
+		});
+	}
+
+	function findColor(index) {
+		if (wordToGuess[index] == userGuess[index]) return "green";
+		else {
+			for (let char of wordToGuess) {
+				if (char == userGuess[index]) return "yellow";
+			}
+			return "grey";
+		}
+	}
+
+	function handleGridInput() {
+		setGrid((prevGrid) => {
+			let tempGrid = [];
+
+			for (let i = 0; i < prevGrid.length; i++) {
+				let tempRow = [];
+				for (let j = 0; j < prevGrid[0].length; j++) {
+					tempRow.push(prevGrid[i][j]);
+				}
+				tempGrid.push(tempRow);
+			}
+			for (let j = 0; j < prevGrid[0].length; j++) {
+				tempGrid[guessNo][j] = {
+					keyChar: userGuess[j],
+					keyColor: "neutral",
+				};
+			}
+			return tempGrid;
+		});
+	}
+	return {
+		mp,
+		charsTopRow,
+		charsMidRow,
+		charsBottomRow,
+		handleClick,
+		guessNo,
+		handleGridSubmit,
+		handleGridInput,
+	};
 }

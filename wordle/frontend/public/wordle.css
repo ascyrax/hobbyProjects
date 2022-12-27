@@ -1,0 +1,12 @@
+/* full body */
+body {
+	color: white;
+	background-color: #121213;
+}
+
+.wordle {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
