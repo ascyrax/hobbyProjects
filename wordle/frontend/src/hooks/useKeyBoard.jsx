@@ -97,6 +97,7 @@ export default function useKeyBoard(
 				userGuess.pop();
 			}
 			setUserGuess(userGuess);
+			handleGridInput();
 			console.log(userGuess);
 			return;
 		}
