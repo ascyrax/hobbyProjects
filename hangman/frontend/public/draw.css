@@ -40,6 +40,7 @@
 	height: 14vh;
 	width: var(--thick);
 	border: calc(var(--thick) / 2) solid white;
+	background-color: white;
 	border-radius: 50%;
 	left: calc(40% + 20vh);
 	top: calc(5vh + 6vh - 2px);
