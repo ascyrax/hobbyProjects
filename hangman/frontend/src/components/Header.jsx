@@ -5,7 +5,7 @@ export default function Header(props) {
 			<div className="div-menu">
 				<button className="btn-menu"></button>
 			</div>
-			<h1 className="title">Hangman</h1>
+			<h1 className="title">Save The Man</h1>
 			<div className="div-options">
 				<ul className="ul-options">
 					<li className="info">info</li>
