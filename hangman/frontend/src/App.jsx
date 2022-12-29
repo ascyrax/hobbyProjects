@@ -5,7 +5,7 @@ import words from "../data/words.json";
 function App() {
 	const index = Math.floor(Math.random() * words.length);
 	const [wordToGuess, setWordToGuess] = useState(words[index].toUpperCase());
-	const [guessesLeft, setGuessesLeft] = useState(wordToGuess.length);
+	const [guessesLeft, setGuessesLeft] = useState(6);
 	const [userWon, setUserWon] = useState(false);
 	if (userWon) alert("あなたが勝った 🥳🥂🍾");
 	if (guessesLeft == 0) alert("負けた 😭😖🥵");

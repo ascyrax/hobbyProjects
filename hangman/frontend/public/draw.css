@@ -1,0 +1,87 @@
+:root {
+	--thick: 2vh;
+}
+.draw {
+	width: 70vw;
+	height: 40vh;
+	position: relative;
+}
+.absPosEl {
+	position: absolute;
+}
+
+.poleVerticalBig {
+	height: 40vh;
+	width: var(--thick);
+	background-color: white;
+	left: 40%;
+}
+.poleHorizontal {
+	height: var(--thick);
+	width: 20vh;
+	background-color: white;
+	left: 40%;
+}
+.poleVerticalSmall {
+	height: 5vh;
+	width: var(--thick);
+	background-color: white;
+	left: calc(40% + 20vh);
+}
+.head {
+	height: 6vh;
+	width: 6vh;
+	border: calc(var(--thick) / 2) solid white;
+	border-radius: 50%;
+	left: calc(40% + 20vh +var(--thick) - 3vh - calc(var(--thick) / 2));
+	top: calc(5vh - 2px);
+}
+.torso {
+	height: 14vh;
+	width: var(--thick);
+	border: calc(var(--thick) / 2) solid white;
+	border-radius: 50%;
+	left: calc(40% + 20vh);
+	top: calc(5vh + 6vh - 2px);
+}
+.leftHand {
+	width: 8vh;
+	background-color: white;
+	height: calc(var(--thick) / 2);
+	left: calc(40% + 20vh + var(--thick) / 2 - 8vh);
+	top: calc(13vh + 2vh);
+	rotate: 30deg;
+	transform-origin: right;
+}
+.rightHand {
+	width: 8vh;
+	background-color: white;
+	height: calc(var(--thick) / 2);
+	left: calc(40% + 20vh + var(--thick) / 2);
+	top: calc(13vh + 2vh);
+	rotate: -30deg;
+	transform-origin: left;
+}
+
+.leftLeg {
+	width: 10vh;
+	background-color: white;
+	height: calc(var(--thick) / 2);
+	left: calc(40% + 20vh + var(--thick) / 2 - 10vh);
+	top: calc(11vh + 13vh - 2px);
+	rotate: -60deg;
+	transform-origin: right;
+}
+.rightLeg {
+	width: 10vh;
+	background-color: white;
+	height: calc(var(--thick) / 2);
+	left: calc(40% + 20vh + var(--thick) / 2);
+	top: calc(11vh + 13vh - 2px);
+	rotate: 60deg;
+	transform-origin: left;
+}
+
+.hide {
+	visibility: hidden;
+}

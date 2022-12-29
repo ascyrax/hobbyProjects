@@ -40,7 +40,7 @@ export default function Hangman({
 	return (
 		<div className="hangman">
 			<Header />
-			<Draw />
+			<Draw guessesLeft={guessesLeft} />
 			<Input wordToGuess={wordToGuess} keyBoardState={keyBoardState} />
 			<KeyBoard
 				mp={mp}
