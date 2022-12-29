@@ -1,4 +1,4 @@
-#keyboard {
+/* #keyboard {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
@@ -6,8 +6,6 @@
 	justify-content: center;
 	align-items: center;
 	margin: auto;
-	/* box-sizing: border-box; */
-	/* padding: 20px 0 0 0; */
 }
 
 #keyRow {
@@ -18,7 +16,6 @@
 	width: 44px;
 	height: 58px;
 
-	/* color: black; */
 	border-radius: 5px;
 
 	display: flex;
@@ -49,4 +46,66 @@
 #XX {
 	width: 70px;
 	height: 58px;
+} */
+
+.keyboard {
+	display: flex;
+	flex-direction: column;
+	width: 100vw;
+	max-width: 550px;
+	height: 27vh;
+	justify-content: center;
+	align-items: center;
+	margin-top: 5vh;
+}
+
+.keyRow {
+	height: 30%;
+	display: flex;
+	width: 90%;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+	/* margin-top: 1vh; */
+}
+.keyboard .keyRow:nth-child(2) {
+	width: 80%;
+}
+
+.key {
+	height: 10vh;
+	max-height: 50px;
+	width: 20vh;
+	max-width: 60px;
+
+	border-radius: 5px;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+	font-size: medium;
+	font-weight: 900;
+
+	margin-left: 0.6vh;
+}
+
+.green {
+	background-color: #538d4e;
+}
+.neutral {
+	background-color: #818384;
+}
+.grey {
+	background-color: #3a3a3c;
+}
+.yellow {
+	background-color: #b59f3b;
+}
+
+#ENTER,
+#XX {
+	max-width: 80px;
 }

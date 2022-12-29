@@ -1,4 +1,4 @@
-.header {
+/* .header {
 	height: 65px;
 	width: 100vw;
 	display: flex;
@@ -28,6 +28,47 @@
 	flex-direction: row;
 	justify-content: space-around;
 	list-style: none;
+}
+*/
+/* for the horizontal line below the header section */
+/* .header {
+	border-bottom: 1px solid white;
+}  */
+
+.header {
+	height: 10vh;
+	width: 100vw;
+	display: flex;
+	flex-direction: row;
+	background-color: #121213;
+	justify-content: center;
+	align-items: center;
+}
+.div-menu {
+	width: 30vw;
+}
+.btn-menu {
+	width: 30px;
+	height: 30px;
+	display: flex;
+	background-color: white;
+	cursor: pointer;
+}
+.title {
+	width: 50vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	font-size: 1.5rem;
+}
+.ul-options {
+	display: flex;
+	width: 25vw;
+	flex-direction: row;
+	justify-content: space-around;
+	list-style: none;
+	cursor: pointer;
 }
 
 /* for the horizontal line below the header section */

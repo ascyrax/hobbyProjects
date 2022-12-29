@@ -5,9 +5,8 @@
 	align-items: center;
 	justify-content: center;
 
-	width: 50%;
-	height: 50%;
-	margin: 25px auto;
+	width: 50vw;
+	height: 50vh;
 }
 
 .row {

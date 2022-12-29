@@ -8,9 +8,9 @@ export default function Header(props) {
 			<h1 className="title">Wordle</h1>
 			<div className="div-options">
 				<ul className="ul-options">
-					<li className="info">info</li>
-					<li className="stats">stats</li>
-					<li className="settings">settings</li>
+					<li className="info">A</li>
+					<li className="stats">B</li>
+					<li className="settings">C</li>
 				</ul>
 			</div>
 		</div>

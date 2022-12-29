@@ -2,22 +2,34 @@
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
-	max-width: 75vw;
+	width: 100vw;
+	max-width: 550px;
+	height: 27vh;
 	justify-content: center;
 	align-items: center;
-	/* box-sizing: border-box; */
-	/* padding: 20px 0 0 0; */
+	margin-top: 5vh;
 }
 
 .keyRow {
+	height: 30%;
 	display: flex;
-	margin: 0 0 8px 0;
-}
-.key {
-	width: 44px;
-	height: 58px;
+	width: 90%;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 
-	/* color: black; */
+	/* margin-top: 1vh; */
+}
+.keyboard .keyRow:nth-child(2) {
+	width: 80%;
+}
+
+.key {
+	height: 10vh;
+	max-height: 50px;
+	width: 20vh;
+	max-width: 60px;
+
 	border-radius: 5px;
 
 	display: flex;
@@ -28,7 +40,7 @@
 	font-size: medium;
 	font-weight: 900;
 
-	margin: 0 0 0 6px;
+	margin-left: 0.6vh;
 }
 
 .green {
@@ -46,6 +58,5 @@
 
 #ENTER,
 #XX {
-	width: 70px;
-	height: 58px;
+	max-width: 80px;
 }

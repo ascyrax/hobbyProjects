@@ -10,8 +10,8 @@ export default function KeyBoard({
 	handleClick,
 }) {
 	return (
-		<div id="keyboard">
-			<div id="keyRow">
+		<div className="keyboard">
+			<div className="keyRow">
 				{charsTopRow.map((el) => {
 					let keyObj = (keyBoardState ? keyBoardState : mp).get(el);
 					return (
@@ -24,7 +24,7 @@ export default function KeyBoard({
 					);
 				})}
 			</div>
-			<div id="keyRow">
+			<div className="keyRow">
 				{charsMidRow.map((el) => {
 					let keyObj = (keyBoardState ? keyBoardState : mp).get(el);
 
@@ -38,7 +38,7 @@ export default function KeyBoard({
 					);
 				})}
 			</div>
-			<div id="keyRow">
+			<div className="keyRow">
 				{charsBottomRow.map((el) => {
 					let keyObj = (keyBoardState ? keyBoardState : mp).get(el);
 
