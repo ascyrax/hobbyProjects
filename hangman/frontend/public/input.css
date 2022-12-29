@@ -1,0 +1,20 @@
+.input {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.input > div {
+	border-bottom: 1px solid white;
+	width: 5vw;
+	height: 5vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	margin: 0 0 0 10px;
+}
+
+.hide {
+	visibility: hidden;
+}

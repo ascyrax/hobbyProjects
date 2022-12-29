@@ -1,28 +1,51 @@
-#keyboard {
+.keyboard {
 	display: flex;
+	flex-direction: column;
 	flex-wrap: wrap;
 	max-width: 75vw;
 	justify-content: center;
 	align-items: center;
-	margin: auto;
+	/* box-sizing: border-box; */
+	/* padding: 20px 0 0 0; */
 }
 
-#key {
-	width: 5vw;
-	height: 5vw;
-	background-color: azure;
+.keyRow {
+	display: flex;
+	margin: 0 0 8px 0;
+}
+.key {
+	width: 44px;
+	height: 58px;
 
-	border: 2px solid black;
-	border-radius: 10px;
+	/* color: black; */
+	border-radius: 5px;
 
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
 
-	font-size: large;
+	font-size: medium;
 	font-weight: 900;
-	color: black;
 
-	margin: 0.5vw;
+	margin: 0 0 0 6px;
+}
+
+.green {
+	background-color: #538d4e;
+}
+.neutral {
+	background-color: #818384;
+}
+.grey {
+	background-color: #3a3a3c;
+}
+.yellow {
+	background-color: #b59f3b;
+}
+
+#ENTER,
+#XX {
+	width: 70px;
+	height: 58px;
 }

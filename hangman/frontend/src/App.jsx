@@ -1,30 +1,25 @@
-import React from "react";
-import Draw from "../components/Draw";
-import Word from "../components/Word";
-import KeyBoard from "../components/KeyBoard";
-
+import { useState } from "react";
+import Hangman from "./components/Hangman";
 import words from "../data/words.json";
 
 function App() {
 	const index = Math.floor(Math.random() * words.length);
-	const [wordToGuess, setWordToGuess] = React.useState(words[index]);
+	const [wordToGuess, setWordToGuess] = useState(words[index].toUpperCase());
+	const [guessesLeft, setGuessesLeft] = useState(wordToGuess.length);
+	const [userWon, setUserWon] = useState(false);
+	if (userWon) alert("あなたが勝った 🥳🥂🍾");
+	if (guessesLeft == 0) alert("負けた 😭😖🥵");
 
 	console.log(wordToGuess);
-
-	function checkTheGuess(keyChar) {
-		keyChar = keyChar.toLowerCase();
-
-		for (let i = 0; i < wordToGuess.length; i++) {
-			if (wordToGuess.charAt(i) === keyChar) return true;
-		}
-		return false;
-	}
-
 	return (
 		<div className="App">
-			<Draw />
-			<Word />
-			<KeyBoard checkTheGuess={checkTheGuess} />
+			<Hangman
+				wordToGuess={wordToGuess}
+				guessesLeft={guessesLeft}
+				setGuessesLeft={setGuessesLeft}
+				userWon={userWon}
+				setUserWon={setUserWon}
+			/>
 		</div>
 	);
 }
