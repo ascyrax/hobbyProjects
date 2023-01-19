@@ -5,23 +5,16 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-}
-
-.register::before {
-	content: "";
-	background-image: linear-gradient(-45deg, #4481eb, #04befe);
-	width: 220vh;
-	height: 220vh;
 	position: absolute;
-	border-radius: 50%;
+	transition: 2s;
 
-	top: -100vh;
-	left: 50vw;
-
-	z-index: -1;
+	/* when hidden */
+	opacity: 0;
+	pointer-events: none;
+	transform: translateX(50vw);
 }
 
-.left {
+.register .left {
 	display: flex;
 	flex-direction: column;
 
@@ -32,14 +25,15 @@
 	height: 100%;
 
 	padding: 1rem 2rem;
+	transition: 1s;
 }
 
-.left h1 {
+.register .left h1 {
 	font-size: 2rem;
 	color: rgba(0, 0, 0, 0.75);
 }
 
-.left .form-register {
+.register .left .form-register {
 	display: flex;
 	flex-direction: column;
 
@@ -47,7 +41,7 @@
 	align-items: center;
 }
 
-.left .input-field {
+.register .left .input-field {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -81,11 +75,11 @@
 	transition: 0.5s;
 }
 
-.btn-register:hover {
+.register.btn-register:hover {
 	background-color: #1752b9;
 }
 
-.left .div-links {
+.register .left .div-links {
 	font-size: 0.75rem;
 	margin-top: 1rem;
 	width: 100%;
@@ -94,11 +88,11 @@
 	flex-direction: column;
 	align-items: center;
 }
-.left .div-links .mssg {
+.register .left .div-links .mssg {
 	font-weight: bold;
 	color: rgba(0, 0, 0, 0.75);
 }
-.left .links {
+.register .left .links {
 	margin-top: 0.5rem;
 	display: flex;
 	flex-direction: row;
@@ -106,7 +100,7 @@
 	align-items: center;
 }
 
-.left .link {
+.register .left .link {
 	border: 1px solid gray;
 	border-radius: 50%;
 	width: 25px;
@@ -119,13 +113,13 @@
 	transition: 0.5s;
 }
 
-.left .link:hover {
+.register .left .link:hover {
 	color: whitesmoke;
 	background-color: rgba(17, 160, 226, 0.6);
 }
 
 /* right hand side */
-.right {
+.register .right {
 	width: 50%;
 	height: 100%;
 
@@ -136,7 +130,7 @@
 
 	color: whitesmoke;
 }
-.right .right-top {
+.register .right .right-top {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -145,7 +139,7 @@
 	font-size: 1rem;
 }
 
-.right .right-top .btn-signIn {
+.register .right .right-top .btn-signIn {
 	margin-top: 0.5rem;
 	border-radius: 20px;
 	border: none;
@@ -153,27 +147,43 @@
 	background-color: transparent;
 	width: fit-content;
 	color: whitesmoke;
-	border: 1px solid whitesmoke;
+	border: 2px solid whitesmoke;
 
 	cursor: pointer;
 	transition: 0.5s;
 }
 
-.right .btn-signIn:hover {
+.register .right .btn-signIn:hover {
 	background-color: rgb(241, 237, 237);
 	color: rgb(30, 99, 177);
 }
-.right > .right-bottom {
+.register .right > .right-bottom {
 	width: 80%;
 	height: 50%;
-	background-image: url("../images/register.svg");
+	/* background-image: url("../images/register.svg");
 	background-position: center;
 	background-size: contain;
-	background-repeat: no-repeat;
+	background-repeat: no-repeat; */
 
 	margin-top: 3rem;
 }
+.img-right {
+	height: 100%;
+	width: 100%;
+}
 
-.right-top h1 {
+.register .right-top h1 {
 	font-size: 1rem;
+}
+
+/* circle */
+.register.slideLeft::before {
+	transform: translateX(-100%);
+}
+
+/* show hide */
+.showRegister {
+	opacity: 1;
+	pointer-events: all;
+	transform: translateX(0);
 }

@@ -1,0 +1,34 @@
+.auth {
+	position: relative;
+	overflow: hidden;
+	height: 100vh;
+	width: 100vw;
+}
+
+.auth-register::before {
+	content: "";
+	background-image: linear-gradient(-45deg, #4481eb, #04befe);
+	width: 220vh;
+	height: 220vh;
+	position: absolute;
+	border-radius: 50%;
+
+	top: -110vh;
+	left: 50vw;
+
+	transition: 2s;
+}
+
+.auth-login::before {
+	content: "";
+	background-image: linear-gradient(-45deg, #4481eb, #04befe);
+	width: 220vh;
+	height: 220vh;
+	position: absolute;
+	border-radius: 50%;
+
+	top: -110vh;
+	left: calc(-1 * calc(220vh - 50vw));
+
+	transition: 2s;
+}

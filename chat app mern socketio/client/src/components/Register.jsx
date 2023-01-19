@@ -1,4 +1,6 @@
-import React from "react";
+import { React, useState } from "react";
+import axios from "axios";
+import { Link, Navigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -7,18 +9,31 @@ import {
 	faGoogle,
 	faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
-export default function Register() {
+import { host, registerRoute, loginRoute } from "../../utils/APIRoutes";
+
+export default function Register({ toggleAuthState, page }) {
+	let [state, setState] = useState({
+		username: "",
+		email: "",
+		password: "",
+		password2: "",
+	});
+
+	let showHideStatus = "";
+	if (page == "register") showHideStatus = "showRegister";
 	return (
-		<div className="register">
+		<div className={`register ${showHideStatus}`}>
 			<div className="left">
 				<h1>Sign up</h1>
-				<form className="form-register">
+				<form className="form-register" onSubmit={handleSubmit}>
 					<div className="input-field">
 						<FontAwesomeIcon icon={faUser} />
 						<input
 							type="text"
 							name="username"
 							id="username"
+							value={state.username}
+							onChange={handleInputChange}
 							placeholder="Username"
 							className="input"
 						/>
@@ -29,6 +44,8 @@ export default function Register() {
 							type="text"
 							name="email"
 							id="email"
+							value={state.email}
+							onChange={handleInputChange}
 							placeholder="Email"
 							className="input"
 						/>
@@ -39,6 +56,8 @@ export default function Register() {
 							type="text"
 							name="password"
 							id="password"
+							value={state.password}
+							onChange={handleInputChange}
 							placeholder="Password"
 							className="input"
 						/>
@@ -49,6 +68,8 @@ export default function Register() {
 							type="text"
 							name="password2"
 							id="password2"
+							value={state.password2}
+							onChange={handleInputChange}
 							placeholder="Password"
 							className="input"
 						/>
@@ -78,10 +99,45 @@ export default function Register() {
 			<div className="right">
 				<div className="right-top">
 					<h1>Already Registered?</h1>
-					<button className="btn-signIn">SIGN IN</button>
+					<button className="btn-signIn" onClick={handlePageToggle}>
+						SIGN IN
+					</button>
 				</div>
-				<div className="right-bottom"></div>
+				<div className="right-bottom">
+					<img src="images/register.svg" className="img-right"></img>
+				</div>
 			</div>
 		</div>
 	);
+
+	function handlePageToggle() {
+		toggleAuthState("login");
+	}
+	function handleInputChange(e) {
+		let { name, value } = e.target;
+		setState((prevState) => ({ ...prevState, [name]: value }));
+	}
+
+	function handleValidation() {
+		return true;
+	}
+
+	async function handleSubmit(e) {
+		e.preventDefault();
+		if (handleValidation()) {
+			let payload = {
+				username: state.username,
+				email: state.email,
+				password: state.password,
+				password2: state.password2,
+			};
+			try {
+				let postReturn = await axios.post(registerRoute, payload);
+				console.log(postReturn.data);
+			} catch (e) {
+				console.log("error", e);
+			}
+		} else {
+		}
+	}
 }
