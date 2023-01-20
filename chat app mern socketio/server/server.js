@@ -32,8 +32,7 @@ mongoose.connect(
 	},
 	(e) => console.error("database connection error \n", e)
 );
-let dbNative = mongoose.connection.db;
-console.log(dbNative);
 
+// todo
 // get the list of databases
 // why can i change the CLOUD_DB env variable and still get a connection successful message.
