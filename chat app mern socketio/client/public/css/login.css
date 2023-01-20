@@ -1,26 +1,29 @@
 .login {
-	width: 100vw;
+	width: 50vw;
 	height: 100vh;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
 	position: absolute;
-	transition: 2s;
+	transition: 1s;
+	transition-delay: 0.5s;
+	z-index: 3;
 	/* when hidden */
+	top: 0;
+	left: 0;
 	opacity: 0;
 	pointer-events: none;
-	transform: translateX(-50vw);
 }
 
-.login .left {
+.login-left {
 	display: flex;
 	flex-direction: column;
 
 	justify-content: center;
 	align-items: center;
 
-	width: 50%;
+	width: 100%;
 	height: 100%;
 
 	padding: 1rem 2rem;
@@ -28,12 +31,12 @@
 	transition: 1s;
 }
 
-.login .left h1 {
+.login-left h1 {
 	font-size: 2rem;
 	color: rgba(0, 0, 0, 0.75);
 }
 
-.login .left .form-login {
+.login-left .form-login {
 	display: flex;
 	flex-direction: column;
 
@@ -41,7 +44,7 @@
 	align-items: center;
 }
 
-.login .left .input-field {
+.login-left .input-field {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -53,7 +56,7 @@
 	color: rgba(0, 0, 0, 0.1);
 }
 
-.login .left .form-login .input-field .input {
+.login-left .form-login .input-field .input {
 	background-color: transparent;
 	outline: none;
 	border: none;
@@ -62,7 +65,7 @@
 	margin-left: 1rem;
 }
 
-.login .form-login .btn-login {
+.form-login .btn-login {
 	margin-top: 1.5rem;
 	border-radius: 20px;
 	border: none;
@@ -75,11 +78,11 @@
 	transition: 0.5s;
 }
 
-.login .btn-login:hover {
+.btn-login:hover {
 	background-color: #1752b9;
 }
 
-.login .left .div-links {
+.login-left .div-links {
 	font-size: 0.75rem;
 	margin-top: 1rem;
 	width: 100%;
@@ -88,11 +91,11 @@
 	flex-direction: column;
 	align-items: center;
 }
-.login .left .div-links .mssg {
+.login-left .div-links .mssg {
 	font-weight: bold;
 	color: rgba(0, 0, 0, 0.75);
 }
-.login .left .links {
+.login-left .links {
 	margin-top: 0.5rem;
 	display: flex;
 	flex-direction: row;
@@ -100,7 +103,7 @@
 	align-items: center;
 }
 
-.login .left .link {
+.login-left .link {
 	border: 1px solid gray;
 	border-radius: 50%;
 	width: 25px;
@@ -113,14 +116,14 @@
 	transition: 0.5s;
 }
 
-.login .left .link:hover {
+.login-left .link:hover {
 	color: whitesmoke;
 	background-color: rgba(17, 160, 226, 0.6);
 }
 
 /* right hand side */
-.login .right {
-	width: 50%;
+.login-right {
+	width: 50vw;
 	height: 100%;
 
 	display: flex;
@@ -129,8 +132,16 @@
 	align-items: center;
 
 	color: whitesmoke;
+
+	position: absolute;
+	left: -50vw;
+	top: 0;
+	transition: 1s;
+	transition-delay: 0.5s;
+
+	z-index: 6;
 }
-.login .right .right-top {
+.login-right .right-top {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -139,7 +150,7 @@
 	font-size: 1rem;
 }
 
-.login .right .right-top .btn-signIn {
+.login-right-top .btn-signIn {
 	margin-top: 0.5rem;
 	border-radius: 20px;
 	border: none;
@@ -150,25 +161,29 @@
 	border: 2px solid whitesmoke;
 
 	cursor: pointer;
-	transition: 0.5s;
 }
 
-.login .right .btn-signIn:hover {
+.login-right .btn-signIn:hover {
 	background-color: rgb(241, 237, 237);
 	color: rgb(30, 99, 177);
 }
-.login .right > .right-bottom {
+.login-right > .right-bottom {
 	width: 80%;
 	height: 50%;
-	background-image: url("../images/login.svg");
+	/* background-image: url("../images/login.svg");
 	background-position: center;
 	background-size: contain;
-	background-repeat: no-repeat;
+	background-repeat: no-repeat; */
 
 	margin-top: 3rem;
 }
 
-.login .right-top h1 {
+.img-right-login {
+	width: 100%;
+	height: 100%;
+}
+
+.login-right-top h1 {
 	font-size: 1rem;
 }
 
@@ -176,8 +191,12 @@
 
 /* case when we need to hide the login part */
 
-.showLogin {
+.login.showLogin {
 	opacity: 1;
 	pointer-events: all;
-	transform: translateX(0vw);
+	left: 50vw;
+}
+
+.login-right.showLogin {
+	left: 0;
 }

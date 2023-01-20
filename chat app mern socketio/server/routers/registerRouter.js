@@ -1,7 +1,7 @@
 const regRouter = require("express").Router();
 
-let { register } = require("../controllers/registerController");
+const { register } = require("../controllers/registerController");
 
-regRouter.post("/api/register", register);
+regRouter.post("/", register);
 
 module.exports = regRouter;

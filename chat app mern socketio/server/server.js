@@ -18,9 +18,22 @@ app.listen(process.env.PORT, () => {
 });
 
 // routing
-let router = require("./");
+let registerRouter = require("./routers/registerRouter");
 
-app.post("/api/register", (req, res) => {
-	console.log(req.body);
-	res.send({ mssg: "hello" });
-});
+app.use("/api/register", registerRouter);
+
+// database connection
+const mongoose = require("mongoose");
+mongoose.set("strictQuery", true);
+mongoose.connect(
+	process.env.CLOUD_DB,
+	() => {
+		console.log("connected to the database");
+	},
+	(e) => console.error("database connection error \n", e)
+);
+let dbNative = mongoose.connection.db;
+console.log(dbNative);
+
+// get the list of databases
+// why can i change the CLOUD_DB env variable and still get a connection successful message.

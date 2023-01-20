@@ -22,92 +22,94 @@ export default function Register({ toggleAuthState, page }) {
 	let showHideStatus = "";
 	if (page == "register") showHideStatus = "showRegister";
 	return (
-		<div className={`register ${showHideStatus}`}>
-			<div className="left">
-				<h1>Sign up</h1>
-				<form className="form-register" onSubmit={handleSubmit}>
-					<div className="input-field">
-						<FontAwesomeIcon icon={faUser} />
-						<input
-							type="text"
-							name="username"
-							id="username"
-							value={state.username}
-							onChange={handleInputChange}
-							placeholder="Username"
-							className="input"
-						/>
-					</div>
-					<div className="input-field">
-						<FontAwesomeIcon icon={faEnvelope} />
-						<input
-							type="text"
-							name="email"
-							id="email"
-							value={state.email}
-							onChange={handleInputChange}
-							placeholder="Email"
-							className="input"
-						/>
-					</div>
-					<div className="input-field">
-						<FontAwesomeIcon icon={faKey} />
-						<input
-							type="text"
-							name="password"
-							id="password"
-							value={state.password}
-							onChange={handleInputChange}
-							placeholder="Password"
-							className="input"
-						/>
-					</div>
-					<div className="input-field">
-						<FontAwesomeIcon icon={faKey} />
-						<input
-							type="text"
-							name="password2"
-							id="password2"
-							value={state.password2}
-							onChange={handleInputChange}
-							placeholder="Password"
-							className="input"
-						/>
-					</div>
-					<button type="submit" className="btn-register">
-						REGISTER
-					</button>
-				</form>
-				<div className="div-links">
-					<p className="mssg">Or Register with social platforms</p>
-					<div className="links">
-						<a href="#" className="link fb">
-							<FontAwesomeIcon icon={faFacebook} />
-						</a>
-						<a href="#" className="link twitter">
-							<FontAwesomeIcon icon={faTwitter} />
-						</a>
-						<a href="#" className="link google">
-							<FontAwesomeIcon icon={faGoogle} />
-						</a>
-						<a href="#" className="link linkedin">
-							<FontAwesomeIcon icon={faLinkedin} />
-						</a>
+		<>
+			<div className={`register ${showHideStatus}`}>
+				<div className="register-left">
+					<h1>Sign up</h1>
+					<form className="form-register" onSubmit={handleSubmit}>
+						<div className="input-field">
+							<FontAwesomeIcon icon={faUser} />
+							<input
+								type="text"
+								name="username"
+								id="username"
+								value={state.username}
+								onChange={handleInputChange}
+								placeholder="Username"
+								className="input"
+							/>
+						</div>
+						<div className="input-field">
+							<FontAwesomeIcon icon={faEnvelope} />
+							<input
+								type="text"
+								name="email"
+								id="email"
+								value={state.email}
+								onChange={handleInputChange}
+								placeholder="Email"
+								className="input"
+							/>
+						</div>
+						<div className="input-field">
+							<FontAwesomeIcon icon={faKey} />
+							<input
+								type="text"
+								name="password"
+								id="password"
+								value={state.password}
+								onChange={handleInputChange}
+								placeholder="Password"
+								className="input"
+							/>
+						</div>
+						<div className="input-field">
+							<FontAwesomeIcon icon={faKey} />
+							<input
+								type="text"
+								name="password2"
+								id="password2"
+								value={state.password2}
+								onChange={handleInputChange}
+								placeholder="Password"
+								className="input"
+							/>
+						</div>
+						<button type="submit" className="btn-register">
+							REGISTER
+						</button>
+					</form>
+					<div className="div-links">
+						<p className="mssg">Or Register with social platforms</p>
+						<div className="links">
+							<a href="#" className="link fb">
+								<FontAwesomeIcon icon={faFacebook} />
+							</a>
+							<a href="#" className="link twitter">
+								<FontAwesomeIcon icon={faTwitter} />
+							</a>
+							<a href="#" className="link google">
+								<FontAwesomeIcon icon={faGoogle} />
+							</a>
+							<a href="#" className="link linkedin">
+								<FontAwesomeIcon icon={faLinkedin} />
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div className="right">
-				<div className="right-top">
+			<div className={`register-right ${showHideStatus}`}>
+				<div className="register-right-top">
 					<h1>Already Registered?</h1>
 					<button className="btn-signIn" onClick={handlePageToggle}>
 						SIGN IN
 					</button>
 				</div>
-				<div className="right-bottom">
-					<img src="images/register.svg" className="img-right"></img>
+				<div className="register-right-bottom">
+					<img src="images/register.svg" className="img-right-register"></img>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 
 	function handlePageToggle() {

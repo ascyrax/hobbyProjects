@@ -1,12 +1,15 @@
 .register {
-	width: 100vw;
+	width: 50vw;
 	height: 100vh;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
 	position: absolute;
-	transition: 2s;
+	transition: 1s;
+	transition-delay: 0.5s;
+
+	z-index: 3;
 
 	/* when hidden */
 	opacity: 0;
@@ -14,26 +17,26 @@
 	transform: translateX(50vw);
 }
 
-.register .left {
+.register-left {
 	display: flex;
 	flex-direction: column;
 
 	justify-content: center;
 	align-items: center;
 
-	width: 50%;
+	width: 100%;
 	height: 100%;
 
 	padding: 1rem 2rem;
 	transition: 1s;
 }
 
-.register .left h1 {
+.register-left h1 {
 	font-size: 2rem;
 	color: rgba(0, 0, 0, 0.75);
 }
 
-.register .left .form-register {
+.register-left .form-register {
 	display: flex;
 	flex-direction: column;
 
@@ -41,7 +44,7 @@
 	align-items: center;
 }
 
-.register .left .input-field {
+.register-left .input-field {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -53,7 +56,7 @@
 	color: rgba(0, 0, 0, 0.1);
 }
 
-.left .form-register .input-field .input {
+.register-left .form-register .input-field .input {
 	background-color: transparent;
 	outline: none;
 	border: none;
@@ -79,7 +82,7 @@
 	background-color: #1752b9;
 }
 
-.register .left .div-links {
+.register-left .div-links {
 	font-size: 0.75rem;
 	margin-top: 1rem;
 	width: 100%;
@@ -88,11 +91,11 @@
 	flex-direction: column;
 	align-items: center;
 }
-.register .left .div-links .mssg {
+.register-left .div-links .mssg {
 	font-weight: bold;
 	color: rgba(0, 0, 0, 0.75);
 }
-.register .left .links {
+.register-left .links {
 	margin-top: 0.5rem;
 	display: flex;
 	flex-direction: row;
@@ -100,7 +103,7 @@
 	align-items: center;
 }
 
-.register .left .link {
+.register-left .link {
 	border: 1px solid gray;
 	border-radius: 50%;
 	width: 25px;
@@ -113,14 +116,14 @@
 	transition: 0.5s;
 }
 
-.register .left .link:hover {
+.register-left .link:hover {
 	color: whitesmoke;
 	background-color: rgba(17, 160, 226, 0.6);
 }
 
 /* right hand side */
-.register .right {
-	width: 50%;
+.register-right {
+	width: 50vw;
 	height: 100%;
 
 	display: flex;
@@ -129,8 +132,16 @@
 	align-items: center;
 
 	color: whitesmoke;
+	position: relative;
+	left: 50vw;
+
+	transition: 1s;
+	transition-delay: 0.5s;
+	transform: translateX(50vw);
+
+	z-index: 6;
 }
-.register .right .right-top {
+.register-right .right-top {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -139,7 +150,7 @@
 	font-size: 1rem;
 }
 
-.register .right .right-top .btn-signIn {
+.register-right-top .btn-signIn {
 	margin-top: 0.5rem;
 	border-radius: 20px;
 	border: none;
@@ -153,11 +164,11 @@
 	transition: 0.5s;
 }
 
-.register .right .btn-signIn:hover {
+.register-right .btn-signIn:hover {
 	background-color: rgb(241, 237, 237);
 	color: rgb(30, 99, 177);
 }
-.register .right > .right-bottom {
+.register-right > .right-bottom {
 	width: 80%;
 	height: 50%;
 	/* background-image: url("../images/register.svg");
@@ -167,12 +178,12 @@
 
 	margin-top: 3rem;
 }
-.img-right {
+.img-right-register {
 	height: 100%;
 	width: 100%;
 }
 
-.register .right-top h1 {
+.register-right-top h1 {
 	font-size: 1rem;
 }
 
@@ -186,4 +197,7 @@
 	opacity: 1;
 	pointer-events: all;
 	transform: translateX(0);
+}
+
+.register-right.showRegister {
 }

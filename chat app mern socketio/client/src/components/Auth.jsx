@@ -22,6 +22,7 @@ export default function Auth() {
 					top: "90vh",
 					left: "50vw",
 					cursor: "pointer",
+					zIndex: "10",
 				}}
 				onClick={() => {
 					state.page == "register"
