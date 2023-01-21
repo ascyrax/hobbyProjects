@@ -1,5 +1,3 @@
-import { React, useState } from "react";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -8,6 +6,11 @@ import {
 	faGoogle,
 	faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
+// fontawesome shit above
+
+import { React, useState } from "react";
+import axios from "axios";
+import { loginRoute } from "../../utils/APIRoutes";
 
 export default function Login({ toggleAuthState, page }) {
 	let [state, setState] = useState({
@@ -93,7 +96,22 @@ export default function Login({ toggleAuthState, page }) {
 		let { name, value } = e.target;
 		setState((prevState) => ({ ...prevState, [name]: value }));
 	}
-	function handleSubmit(e) {
+	function handleValidation() {
+		return true;
+	}
+	async function handleSubmit(e) {
 		e.preventDefault();
+		if (handleValidation()) {
+			let payload = {
+				username: state.username,
+				password: state.password,
+			};
+			try {
+				let postReturn = await axios.post(loginRoute, payload);
+				console.log(postReturn.data);
+			} catch (e) {
+				console.log("error", e);
+			}
+		}
 	}
 }

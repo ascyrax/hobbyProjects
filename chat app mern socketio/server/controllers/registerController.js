@@ -2,14 +2,28 @@ const { userModel } = require("../models/userModel");
 
 async function register(req, res) {
 	console.log("req.body", req.body);
-	let { username, email, password, password2 } = req.body;
-	let userCheck = await userModel.findOne({ username });
-	console.log("userCheck", userCheck);
-	if (userCheck) {
-		res.send({ mssg: "user already exists" });
-	} else {
-		await userModel.create(req.body);
-		res.send({ mssg: "new user registered" });
+	try {
+		let { username, email, password, password2 } = req.body;
+
+		let usernameCheck = await userModel.findOne({ username });
+		// console.log("usernameCheck", usernameCheck);
+		if (usernameCheck) {
+			res.send({ mssg: "username already exists. Retry." });
+			return;
+		}
+
+		let emailCheck = await userModel.findOne({ email });
+		// console.log("emailCheck", emailCheck);
+		if (emailCheck) {
+			res.send({ mssg: "email already exists. Retry." });
+			return;
+		}
+
+		const newUser = await userModel.create(req.body);
+		res.send({ mssg: "New user registered." });
+		return;
+	} catch (e) {
+		console.log("error", e);
 	}
 }
 

@@ -2,6 +2,6 @@ const loginRouter = require("express").Router();
 
 let { login } = require("../controllers/loginController");
 
-loginRouter.post("/api/login", login);
+loginRouter.post("/", login);
 
 module.exports = loginRouter;
