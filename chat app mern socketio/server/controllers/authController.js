@@ -40,4 +40,20 @@ async function register(req, res) {
 	}
 }
 
-module.exports = { login, register };
+async function setAvatar(req, res) {
+	console.log(req.body);
+
+	const { username, avatarImage } = req.body;
+
+	const user = await userModel.findOneAndUpdate(
+		{ username },
+		{
+			avatarImage,
+		}
+	);
+
+	res.send({ mssg: "avatar set successfully", status: true });
+	return;
+}
+
+module.exports = { login, register, setAvatar };

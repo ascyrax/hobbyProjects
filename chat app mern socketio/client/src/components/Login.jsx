@@ -110,14 +110,15 @@ export default function Login({ toggleAuthState, page }) {
 				password: state.password,
 			};
 			try {
-				let postReturn = await axios.post(loginRoute, payload);
-				console.log(postReturn.data);
-				if (postReturn.data.status == true) {
+				let serverRespone = await axios.post(loginRoute, payload);
+				console.log(serverRespone.data);
+				if (serverRespone.data.status == true) {
 					saveUserInLocalStorage();
 				}
 			} catch (e) {
 				console.log("error", e);
 			}
+		} else {
 		}
 	}
 	function saveUserInLocalStorage() {

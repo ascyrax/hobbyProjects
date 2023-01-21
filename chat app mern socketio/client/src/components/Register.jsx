@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import axios from "axios";
-import { Link, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -9,7 +9,7 @@ import {
 	faGoogle,
 	faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
-import { host, registerRoute, loginRoute } from "../../utils/APIRoutes";
+import { registerRoute } from "../../utils/APIRoutes";
 
 export default function Register({ toggleAuthState, page }) {
 	let [state, setState] = useState({
@@ -18,9 +18,11 @@ export default function Register({ toggleAuthState, page }) {
 		password: "",
 		password2: "",
 	});
+	let navigate = useNavigate();
 
 	let showHideStatus = "";
 	if (page == "register") showHideStatus = "showRegister";
+
 	return (
 		<>
 			<div className={`register ${showHideStatus}`}>
@@ -134,12 +136,22 @@ export default function Register({ toggleAuthState, page }) {
 				password2: state.password2,
 			};
 			try {
-				let postReturn = await axios.post(registerRoute, payload);
-				console.log(postReturn.data);
+				let serverRespone = await axios.post(registerRoute, payload);
+				console.log(serverRespone.data);
+				if (serverRespone.data.status == true) {
+					saveUserInLocalStorage();
+				}
 			} catch (e) {
 				console.log("error", e);
 			}
 		} else {
 		}
+	}
+
+	function saveUserInLocalStorage() {
+		localStorage.setItem("ascyChat-isLoggedIn", true);
+		localStorage.setItem("ascyChat-username", state.username);
+		console.log(localStorage);
+		navigate("/");
 	}
 }

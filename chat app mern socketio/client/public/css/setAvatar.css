@@ -1,0 +1,64 @@
+.setAvatar {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+}
+.avatars-container {
+	height: 30vh;
+	width: 90vw;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+.avatar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.setAvatar img {
+	height: 60%;
+	margin: 1vh 2vh;
+	border: 2px solid cornflowerblue;
+	border-radius: 50%;
+	transition: all 0.5s;
+}
+
+.setAvatarBtn {
+	border-radius: 20px;
+	border: none;
+	padding: 0.4rem 1rem;
+	background-color: #5995fd;
+	width: fit-content;
+	color: whitesmoke;
+
+	cursor: pointer;
+	transition: all 0.5s;
+
+	border: 2px solid transparent;
+}
+.setAvatarBtn:hover {
+	border: 2px solid mediumturquoise;
+	background-color: cornsilk;
+	color: rgb(30, 99, 177);
+}
+
+.reloadAvatars {
+	border-radius: 20px;
+	padding: 0.4rem 1rem;
+}
+
+/* selecting an image as the avatar */
+
+.setAvatar img:hover {
+	transform: scale(1.1);
+	border: 2px solid black;
+}
+
+.setAvatar img.selected {
+	transform: scale(1.2);
+	border: 2px solid black;
+}
