@@ -17,21 +17,16 @@ app.listen(process.env.PORT, () => {
 	console.log("listening on port ", process.env.PORT);
 });
 
-// routing
-const registerRouter = require("./routers/registerRouter");
-app.use("/api/register", registerRouter);
-
-const loginRouter = require("./routers/loginRouter");
-app.use("/api/login", loginRouter);
-
 // database connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", true);
-try {
-	mongoose.connect(process.env.CLOUD_DB, {}, (e) => {
-		if (e) console.error("DATABASE CONNECTION ERROR \n", e);
-		else {
-			console.log("DATABASE CONNECTION SUCCESSFUL");
-		}
-	});
-} catch (e) {}
+mongoose.connect(process.env.CLOUD_DB, {}, (e) => {
+	if (e) console.error("DATABASE CONNECTION ERROR \n", e);
+	else {
+		console.log("DATABASE CONNECTION SUCCESSFUL");
+	}
+});
+
+// routing
+const { authRouter } = require("./routers/authRouter");
+app.use("/api/auth", authRouter);

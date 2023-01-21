@@ -11,6 +11,7 @@ import {
 import { React, useState } from "react";
 import axios from "axios";
 import { loginRoute } from "../../utils/APIRoutes";
+import { useNavigate } from "react-router-dom";
 
 export default function Login({ toggleAuthState, page }) {
 	let [state, setState] = useState({
@@ -20,6 +21,8 @@ export default function Login({ toggleAuthState, page }) {
 
 	let showHideStatus = "";
 	if (page == "login") showHideStatus = "showLogin";
+
+	const navigate = useNavigate();
 
 	return (
 		<>
@@ -109,9 +112,18 @@ export default function Login({ toggleAuthState, page }) {
 			try {
 				let postReturn = await axios.post(loginRoute, payload);
 				console.log(postReturn.data);
+				if (postReturn.data.status == true) {
+					saveUserInLocalStorage();
+				}
 			} catch (e) {
 				console.log("error", e);
 			}
 		}
+	}
+	function saveUserInLocalStorage() {
+		localStorage.setItem("ascyChat-isLoggedIn", true);
+		localStorage.setItem("ascyChat-username", state.username);
+		console.log(localStorage);
+		navigate("/");
 	}
 }
