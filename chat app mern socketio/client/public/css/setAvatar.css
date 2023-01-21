@@ -62,3 +62,23 @@
 	transform: scale(1.2);
 	border: 2px solid black;
 }
+
+/* loader gif */
+.div-loading {
+	width: 50vw;
+	height: 50vw;
+	position: relative;
+	top: 50vh;
+	left: 50vw;
+	transform: translate(-50%, -50%);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.img-loading {
+	width: 50%;
+	height: 50%;
+	border-radius: 50%;
+}

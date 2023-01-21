@@ -9,6 +9,16 @@ import {
 import { Buffer } from "buffer";
 import { useNavigate } from "react-router-dom";
 
+import loading01 from "../../public/images/loading01.gif";
+import loading02 from "../../public/images/loading02.gif";
+import loading03 from "../../public/images/loading03.gif";
+import loading04 from "../../public/images/loading04.gif";
+import loading05 from "../../public/images/loading05.gif";
+import loading06 from "../../public/images/loading06.gif";
+import loading07 from "../../public/images/loading07.gif";
+import loading08 from "../../public/images/loading08.gif";
+import loading09 from "../../public/images/loading09.gif";
+
 export default function SetAvatar() {
 	const [avatars, setAvatars] = useState(5);
 	const [isLoading, setIsLoading] = useState(true);
@@ -16,9 +26,20 @@ export default function SetAvatar() {
 		Number(localStorage.getItem("ascyChat-avatarReloadCnt")) || 0
 	);
 	const [selectedAvatar, setSelectedAvatar] = useState(-1);
+	const [loaderImageNumber, setLoaderImageNumber] = useState(1);
 	const navigate = useNavigate();
+	const loadingGifs = [
+		loading01,
+		loading02,
+		loading03,
+		loading04,
+		loading05,
+		loading06,
+		loading07,
+		loading08,
+		loading09,
+	];
 
-	console.log(avatars, isLoading, reload);
 	useEffect(() => {
 		localStorage.setItem("ascyChat-avatarReloadCnt", JSON.stringify(reload));
 		async function fetchImages() {
@@ -31,7 +52,15 @@ export default function SetAvatar() {
 
 	return (
 		<>
-			{isLoading || (
+			{isLoading ? (
+				<div className="div-loading">
+					<img
+						src={loadingGifs[loaderImageNumber]}
+						alt="loading avatars"
+						className="img-loading"
+					/>
+				</div>
+			) : (
 				<div className="setAvatar">
 					<h1>Pick your avatar</h1>
 					<button
@@ -71,6 +100,9 @@ export default function SetAvatar() {
 
 	async function getRandomAvatars(count) {
 		let newAvatars = [];
+
+		const randomNumber = Number(Math.floor(Math.random() * loadingGifs.length));
+		setLoaderImageNumber(randomNumber);
 
 		for (let i = 0; i < count; i++) {
 			let randNumber = Math.floor(Number(Math.random() * 1000000));
