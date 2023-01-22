@@ -14,8 +14,12 @@ const chatUserSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
-		avatarImage: {
+		userAvatar: {
 			type: String,
+		},
+		userContactList: {
+			type: Array,
+			default: [],
 		},
 	},
 	{

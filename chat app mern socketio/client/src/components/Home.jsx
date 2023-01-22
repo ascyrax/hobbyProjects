@@ -1,5 +1,7 @@
 import { React, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Contacts from "./Contacts";
+import Chat from "./Chat";
 
 export default function Home() {
 	const navigate = useNavigate();
@@ -8,7 +10,12 @@ export default function Home() {
 			navigate("/auth");
 		} else if (!checkForAvatarSet()) navigate("/setAvatar");
 	}, []);
-	return <div>Home</div>;
+	return (
+		<div className="home">
+			<Contacts />
+			<Chat />
+		</div>
+	);
 }
 
 function checkForLoggedIn() {

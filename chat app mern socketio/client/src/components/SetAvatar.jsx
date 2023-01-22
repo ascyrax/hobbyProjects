@@ -9,15 +9,15 @@ import {
 import { Buffer } from "buffer";
 import { useNavigate } from "react-router-dom";
 
-import loading01 from "../../public/images/loading01.gif";
-import loading02 from "../../public/images/loading02.gif";
-import loading03 from "../../public/images/loading03.gif";
-import loading04 from "../../public/images/loading04.gif";
-import loading05 from "../../public/images/loading05.gif";
-import loading06 from "../../public/images/loading06.gif";
-import loading07 from "../../public/images/loading07.gif";
-import loading08 from "../../public/images/loading08.gif";
-import loading09 from "../../public/images/loading09.gif";
+import loading01 from "../../src/images/loading01.gif";
+import loading02 from "../../src/images/loading02.gif";
+import loading03 from "../../src/images/loading03.gif";
+import loading04 from "../../src/images/loading04.gif";
+import loading05 from "../../src/images/loading05.gif";
+import loading06 from "../../src/images/loading06.gif";
+import loading07 from "../../src/images/loading07.gif";
+import loading08 from "../../src/images/loading08.gif";
+import loading09 from "../../src/images/loading09.gif";
 
 export default function SetAvatar() {
 	const [avatars, setAvatars] = useState(5);
@@ -39,7 +39,11 @@ export default function SetAvatar() {
 		loading08,
 		loading09,
 	];
-
+	useEffect(() => {
+		if (!checkForLoggedIn()) {
+			navigate("/auth");
+		} else if (!checkForAvatarSet()) navigate("/setAvatar");
+	}, []);
 	useEffect(() => {
 		localStorage.setItem("ascyChat-avatarReloadCnt", JSON.stringify(reload));
 		async function fetchImages() {
@@ -129,7 +133,7 @@ export default function SetAvatar() {
 
 			const payload = {
 				username,
-				avatarImage: avatars[selectedAvatar],
+				userAvatar: avatars[selectedAvatar],
 			};
 
 			const serverRespone = await axios.post(setAvatarRoute, payload);
@@ -143,6 +147,13 @@ export default function SetAvatar() {
 
 	function saveAvatarStatusInLocalStorage() {
 		localStorage.setItem("ascyChat-isAvatarSet", "true");
+		localStorage.setItem("ascyChat-userAvatar", avatars[selectedAvatar]);
 		navigate("/");
 	}
+}
+function checkForLoggedIn() {
+	return localStorage.getItem("ascyChat-isLoggedIn") == "true";
+}
+function checkForAvatarSet() {
+	return localStorage.getItem("ascyChat-isAvatarSet") == "true";
 }
