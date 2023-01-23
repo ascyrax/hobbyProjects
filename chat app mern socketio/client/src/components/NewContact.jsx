@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import { getUser } from "../../utils/APIRoutes";
+import { findUser } from "../../utils/APIRoutes";
 
 export default function NewContact({ username }) {
 	const [usernameToFind, setUsernameToFind] = useState("");
@@ -11,7 +11,7 @@ export default function NewContact({ username }) {
 		<div className="newContact">
 			{mode == "find" ? (
 				<div className="div-find">
-					<form onSubmit={findUser}>
+					<form onSubmit={handleUserFind}>
 						<input
 							type="text"
 							value={usernameToFind}
@@ -37,12 +37,14 @@ export default function NewContact({ username }) {
 	function changeMode() {
 		setMode((prevMode) => (prevMode == "normal" ? "find" : "normal"));
 	}
-	async function findUser(e) {
+	async function handleUserFind(e) {
 		e.preventDefault();
-		const serverResponse = await axios.post(getUser, {
+		const serverResponse = await axios.post(findUser, {
 			username,
 			usernameToFind,
 		});
+		console.log(serverResponse.data);
+		changeMode();
 	}
 	function handleChange(e) {
 		const name = e.target.name;

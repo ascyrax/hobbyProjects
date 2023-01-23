@@ -49,7 +49,7 @@ async function register(req, res) {
 }
 
 async function setAvatar(req, res) {
-	console.log(req.body);
+	// console.log(req.body);
 
 	const { username, userAvatar } = req.body;
 
@@ -68,17 +68,35 @@ async function setAvatar(req, res) {
 	return;
 }
 
-async function getUser(req, res) {
-	console.log(req.body);
+async function findUser(req, res) {
+	// console.log(req.body);
 	const { username, usernameToFind } = req.body;
 	const user = await userModel.findOne({ username });
-	const userToFind = await userModel.findOne({
-		usernameToFind,
-	});
-	user.userContactList.push(userToFind._id);
-	await user.save();
-
-	res.send({ mssg: "user found", status: true });
+	const userToFind = await userModel.findOne({ username: usernameToFind });
+	if (userToFind) {
+		const temp = [];
+		temp.push(userToFind.username);
+		temp.push(userToFind.userAvatar);
+		user.userContactList.push(temp);
+		await user.save();
+		res.send({ mssg: "user found", status: true });
+	} else {
+		res.send({ mssg: "user not found", status: false });
+	}
 }
 
-module.exports = { login, register, setAvatar, getUser };
+async function getUserContactList(req, res) {
+	// console.log(req.body);
+	const { username } = req.body;
+	// console.log(username);
+	const user = await userModel.findOne({ username });
+	// console.log("getContactList", user);
+	if (user) {
+		const contactList = user.userContactList;
+		res.send({ status: true, contactList });
+	} else {
+		res.send({ status: false });
+	}
+}
+
+module.exports = { login, register, setAvatar, findUser, getUserContactList };
