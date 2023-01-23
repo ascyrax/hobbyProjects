@@ -1,11 +1,16 @@
-import { React, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Contacts from "./Contacts";
 import Chat from "./Chat";
+import axios from "axios";
 
+export const ChatContext = React.createContext();
+import { getAvatar } from "../../utils/APIRoutes";
 export default function Home() {
 	const [username, setUsername] = useState("");
 	const [userAvatar, setUserAvatar] = useState("");
+	const [chattingWith, setChattingWith] = useState("");
+	const [chatUserAvatar, setChatUserAvatar] = useState("");
 	const navigate = useNavigate();
 	useEffect(() => {
 		if (!checkForLoggedIn()) {
@@ -23,12 +28,39 @@ export default function Home() {
 			setUserAvatar(tempAvatar);
 		}
 	}, []);
+	useEffect(() => {
+		async function getChatUserAvatar() {
+			try {
+				const serverResponse = await axios.post(getAvatar, {
+					username: chattingWith,
+				});
+				if (serverResponse.data.status == true)
+					setChatUserAvatar(serverResponse.data.userAvatar);
+			} catch (e) {
+				console.log("error", e);
+			}
+		}
+		getChatUserAvatar();
+	}, [chattingWith]);
 
 	return (
-		<div className="home">
-			<Contacts username={username} userAvatar={userAvatar} />
-			<Chat username={username} userAvatar={userAvatar} />
-		</div>
+		<ChatContext.Provider
+			value={{
+				chattingWith,
+				setChattingWith,
+				userAvatar,
+				setUserAvatar,
+				username,
+				setUsername,
+				chatUserAvatar,
+				setChatUserAvatar,
+			}}
+		>
+			<div className="home">
+				<Contacts />
+				<Chat />
+			</div>
+		</ChatContext.Provider>
 	);
 }
 

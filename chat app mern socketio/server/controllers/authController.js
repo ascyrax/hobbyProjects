@@ -99,4 +99,22 @@ async function getUserContactList(req, res) {
 	}
 }
 
-module.exports = { login, register, setAvatar, findUser, getUserContactList };
+async function getAvatar(req, res) {
+	const { username } = req.body;
+	const user = await userModel.findOne({ username });
+
+	if (user) {
+		res.send({ status: true, userAvatar: user.userAvatar });
+	} else {
+		res.send({ status: false });
+	}
+}
+
+module.exports = {
+	login,
+	register,
+	setAvatar,
+	findUser,
+	getUserContactList,
+	getAvatar,
+};

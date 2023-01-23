@@ -17,6 +17,7 @@ export default function NewContact({ username }) {
 							value={usernameToFind}
 							onChange={handleChange}
 							name="usernameToFind"
+							placeholder="username"
 						/>
 					</form>
 				</div>

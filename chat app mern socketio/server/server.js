@@ -30,3 +30,6 @@ mongoose.connect(process.env.CLOUD_DB, {}, (e) => {
 // routing
 const { authRouter } = require("./routers/authRouter");
 app.use("/api/auth", authRouter);
+
+const { mssgRouter } = require("./routers/mssgRouter");
+app.use("/api/mssg", mssgRouter);

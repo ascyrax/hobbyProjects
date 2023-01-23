@@ -19,7 +19,6 @@ export default function Auth() {
 			return { ...prevState, page: newState };
 		});
 	}
-	console.log(state.page);
 	return (
 		<div className={`auth auth-${state.page}`}>
 			<Register page={state.page} toggleAuthState={toggleAuthState} />

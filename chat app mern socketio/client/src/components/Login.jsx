@@ -111,7 +111,6 @@ export default function Login({ toggleAuthState, page }) {
 			};
 			try {
 				let serverRespone = await axios.post(loginRoute, payload);
-				console.log(serverRespone.data);
 				if (serverRespone.data.status == true) {
 					saveUserInLocalStorage();
 				}

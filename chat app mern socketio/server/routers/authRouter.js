@@ -5,6 +5,7 @@ const {
 	setAvatar,
 	findUser,
 	getUserContactList,
+	getAvatar,
 } = require("../controllers/authController");
 
 authRouter
@@ -12,6 +13,7 @@ authRouter
 	.post("/login", login)
 	.post("/setAvatar", setAvatar)
 	.post("/findUser", findUser)
-	.post("/getUserContactList", getUserContactList);
+	.post("/getUserContactList", getUserContactList)
+	.post("/getAvatar", getAvatar);
 
 module.exports = { authRouter };

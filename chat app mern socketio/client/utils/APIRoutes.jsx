@@ -9,3 +9,7 @@ export const multiAvatarAPI = "https://api.multiavatar.com/";
 export const findUser = `${host}/api/auth/findUser`;
 
 export const getUserContactList = `${host}/api/auth/getUserContactList`;
+export const getAvatar = `${host}/api/auth/getAvatar`;
+
+export const addMssg = `${host}/api/mssg/addMssg`;
+export const getMssg = `${host}/api/mssg/getMssg`;
