@@ -7,7 +7,11 @@ const app = express();
 
 // cors permissions
 const cors = require("cors");
-app.use(cors());
+app.use(
+	cors({
+		origin: "*",
+	})
+);
 
 // req.body is not undefined after this
 app.use(express.json());
