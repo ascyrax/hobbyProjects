@@ -10,7 +10,12 @@ import {
 
 import { React, useState } from "react";
 import axios from "axios";
-import { host, loginRoute } from "../../utils/APIRoutes";
+import {
+	getAvatar,
+	getUserContactList,
+	host,
+	loginRoute,
+} from "../../utils/APIRoutes";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import useToast from "../hooks/useToast";
@@ -117,6 +122,12 @@ export default function Login({ toggleAuthState, page }) {
 	async function handleSubmit(e) {
 		e.preventDefault();
 		const serverRespone = await axios.get(`${host}/api/auth/temp`);
+		console.log(serverRespone.data);
+		serverRespone = await axios.post(getAvatar, { username: "ascyrax" });
+		console.log(serverRespone.data);
+		serverRespone = await axios.post(getUserContactList, {
+			username: "ascyrax",
+		});
 		console.log(serverRespone.data);
 		// if (handleValidation()) {
 		// 	let payload = {

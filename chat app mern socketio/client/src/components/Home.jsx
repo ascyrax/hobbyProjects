@@ -22,7 +22,6 @@ export default function Home() {
 		if (tempUsername) {
 			setUsername(tempUsername);
 		}
-
 		const tempAvatar = localStorage.getItem("ascyChat-userAvatar");
 		if (tempAvatar) {
 			setUserAvatar(tempAvatar);
