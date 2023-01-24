@@ -31,11 +31,15 @@ export default function ChatBox() {
 	return (
 		<div className="chatBox">
 			{messages &&
-				messages.map((message) => {
+				messages.map((message, index) => {
 					let className = "";
 					if (message.from == username) className = "message sent";
 					else className = "message received";
-					return <div className={className}>{message.mssg}</div>;
+					return (
+						<div className={className} key={`${message.mssg}${index}`}>
+							{message.mssg}
+						</div>
+					);
 				})}
 		</div>
 	);

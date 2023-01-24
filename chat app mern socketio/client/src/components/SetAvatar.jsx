@@ -40,9 +40,14 @@ export default function SetAvatar() {
 		loading09,
 	];
 	useEffect(() => {
+		console.log("useEffect 1");
 		if (!checkForLoggedIn()) {
 			navigate("/auth");
-		} else if (!checkForAvatarSet()) navigate("/setAvatar");
+		} else if (!checkForAvatarSet()) {
+			navigate("/setAvatar");
+		} else {
+			navigate("/");
+		}
 	}, []);
 	useEffect(() => {
 		localStorage.setItem("ascyChat-avatarReloadCnt", JSON.stringify(reload));

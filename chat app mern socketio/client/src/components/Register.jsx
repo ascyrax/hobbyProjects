@@ -1,6 +1,3 @@
-import { React, useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -9,7 +6,14 @@ import {
 	faGoogle,
 	faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
+
+import { React, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { registerRoute } from "../../utils/APIRoutes";
+
+import { ToastContainer } from "react-toastify";
+import useToast from "../hooks/useToast";
 
 export default function Register({ toggleAuthState, page }) {
 	let [state, setState] = useState({
@@ -25,6 +29,7 @@ export default function Register({ toggleAuthState, page }) {
 
 	return (
 		<>
+			<ToastContainer />
 			<div className={`register ${showHideStatus}`}>
 				<div className="register-left">
 					<h1>Sign up</h1>
@@ -123,6 +128,22 @@ export default function Register({ toggleAuthState, page }) {
 	}
 
 	function handleValidation() {
+		if (state.username == "") {
+			useToast("error", "👤 Username is required!");
+			return false;
+		}
+		if (state.email == "") {
+			useToast("error", "📧 email is required");
+			return false;
+		}
+		if (state.password != state.password2) {
+			useToast("error", "🔑 passwords must match");
+			return false;
+		}
+		if (state.password.length < 8) {
+			useToast("error", "🔑 password must be atleast 8 chars long");
+			return false;
+		}
 		return true;
 	}
 
@@ -139,19 +160,20 @@ export default function Register({ toggleAuthState, page }) {
 				let serverRespone = await axios.post(registerRoute, payload);
 				console.log(serverRespone.data);
 				if (serverRespone.data.status == true) {
+					useToast("success", "User Registered");
 					saveUserInLocalStorage();
+				} else {
+					useToast("error", serverRespone.data.mssg);
 				}
 			} catch (e) {
 				console.log("error", e);
 			}
-		} else {
 		}
 	}
 
 	function saveUserInLocalStorage() {
 		localStorage.setItem("ascyChat-isLoggedIn", true);
 		localStorage.setItem("ascyChat-username", state.username);
-		console.log(localStorage);
 		navigate("/");
 	}
 }

@@ -18,7 +18,6 @@ async function login(req, res) {
 }
 
 async function register(req, res) {
-	// console.log("req.body", req.body);
 	try {
 		let { username, email, password, password2 } = req.body;
 
@@ -79,18 +78,22 @@ async function findUser(req, res) {
 		temp.push(userToFind.userAvatar);
 		user.userContactList.push(temp);
 		await user.save();
-		res.send({ mssg: "user found", status: true });
+		res.send({
+			mssg: "user found",
+			status: true,
+			contactList: user.userContactList,
+		});
 	} else {
 		res.send({ mssg: "user not found", status: false });
 	}
 }
 
 async function getUserContactList(req, res) {
-	// console.log(req.body);
 	const { username } = req.body;
 	// console.log(username);
 	const user = await userModel.findOne({ username });
 	// console.log("getContactList", user);
+
 	if (user) {
 		const contactList = user.userContactList;
 		res.send({ status: true, contactList });

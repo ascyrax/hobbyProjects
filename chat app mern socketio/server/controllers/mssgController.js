@@ -17,7 +17,6 @@ async function addMssg(req, res) {
 
 async function getMssg(req, res) {
 	const { usersInvolved, to, from } = req.body;
-	console.log(usersInvolved, to, from);
 	try {
 		const messages = await mssgModel.find({ usersInvolved });
 		if (messages) {

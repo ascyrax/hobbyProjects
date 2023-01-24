@@ -12,12 +12,15 @@ import { React, useState } from "react";
 import axios from "axios";
 import { loginRoute } from "../../utils/APIRoutes";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import useToast from "../hooks/useToast";
 
 export default function Login({ toggleAuthState, page }) {
 	let [state, setState] = useState({
 		username: "",
 		password: "",
 	});
+	console.log(state);
 
 	let showHideStatus = "";
 	if (page == "login") showHideStatus = "showLogin";
@@ -26,6 +29,7 @@ export default function Login({ toggleAuthState, page }) {
 
 	return (
 		<>
+			<ToastContainer />
 			<div className={`login-right ${showHideStatus}`}>
 				<div className="login-right-top">
 					<h1>Not logined Yet?</h1>
@@ -100,6 +104,15 @@ export default function Login({ toggleAuthState, page }) {
 		setState((prevState) => ({ ...prevState, [name]: value }));
 	}
 	function handleValidation() {
+		if (state.username == "") {
+			useToast("error", "👤 Username is required!");
+			return false;
+		}
+		if (state.password == "") {
+			useToast("error", "🗝️ Password is required!");
+			return false;
+		}
+
 		return true;
 	}
 	async function handleSubmit(e) {
@@ -112,7 +125,10 @@ export default function Login({ toggleAuthState, page }) {
 			try {
 				let serverRespone = await axios.post(loginRoute, payload);
 				if (serverRespone.data.status == true) {
-					saveUserInLocalStorage();
+					useToast("success", "Login Successful");
+					saveUserInLocalStorage(serverRespone.data.userAvatar);
+				} else {
+					useToast("error", "Login Unsuccessful");
 				}
 			} catch (e) {
 				console.log("error", e);
@@ -120,10 +136,14 @@ export default function Login({ toggleAuthState, page }) {
 		} else {
 		}
 	}
-	function saveUserInLocalStorage() {
+	function saveUserInLocalStorage(userAvatar) {
+		console.log(state);
 		localStorage.setItem("ascyChat-isLoggedIn", true);
 		localStorage.setItem("ascyChat-username", state.username);
-		console.log(localStorage);
+		if (userAvatar != "") {
+			localStorage.setItem("ascyChat-userAvatar", userAvatar);
+			localStorage.setItem("ascyChat-isAvatarSet", true);
+		}
 		navigate("/");
 	}
 }
