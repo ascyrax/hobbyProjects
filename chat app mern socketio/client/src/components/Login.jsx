@@ -10,7 +10,7 @@ import {
 
 import { React, useState } from "react";
 import axios from "axios";
-import { loginRoute } from "../../utils/APIRoutes";
+import { host, loginRoute } from "../../utils/APIRoutes";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import useToast from "../hooks/useToast";
@@ -116,24 +116,25 @@ export default function Login({ toggleAuthState, page }) {
 	}
 	async function handleSubmit(e) {
 		e.preventDefault();
-		if (handleValidation()) {
-			let payload = {
-				username: state.username,
-				password: state.password,
-			};
-			try {
-				let serverRespone = await axios.post(loginRoute, payload);
-				if (serverRespone.data.status == true) {
-					useToast("success", "Login Successful");
-					saveUserInLocalStorage(serverRespone.data.userAvatar);
-				} else {
-					useToast("error", "Login Unsuccessful");
-				}
-			} catch (e) {
-				console.log("error", e);
-			}
-		} else {
-		}
+		const serverRespone = await axios.get(`${host}/api/auth/temp`);
+		console.log(serverRespone.data);
+		// if (handleValidation()) {
+		// 	let payload = {
+		// 		username: state.username,
+		// 		password: state.password,
+		// 	};
+		// 	try {
+		// 		let serverRespone = await axios.post(loginRoute, payload);
+		// 		if (serverRespone.data.status == true) {
+		// 			useToast("success", "Login Successful");
+		// 			saveUserInLocalStorage(serverRespone.data.userAvatar);
+		// 		} else {
+		// 			useToast("error", "Login Unsuccessful");
+		// 		}
+		// 	} catch (e) {
+		// 		console.log("error", e);
+		// 	}
+		// }
 	}
 	function saveUserInLocalStorage(userAvatar) {
 		console.log(state);
