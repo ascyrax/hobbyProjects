@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 // listen
-app.listen(process.env.PORT, () => {
+const server = app.listen(process.env.PORT, () => {
 	console.log("listening on port ", process.env.PORT);
 });
 
@@ -33,3 +33,16 @@ app.use("/api/auth", authRouter);
 
 const { mssgRouter } = require("./routers/mssgRouter");
 app.use("/api/mssg", mssgRouter);
+
+// SOCKET
+const io = require("socket.io")(3000, {
+	cors: {
+		origin: ["http://localhost:5173"],
+	},
+});
+
+io.on("connection", (socket) => {
+	socket.on("text", (obj) => {
+		socket.broadcast.emit("server-broadcast", obj);
+	});
+});

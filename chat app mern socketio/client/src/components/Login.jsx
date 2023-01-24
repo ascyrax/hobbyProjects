@@ -20,7 +20,6 @@ export default function Login({ toggleAuthState, page }) {
 		username: "",
 		password: "",
 	});
-	console.log(state);
 
 	let showHideStatus = "";
 	if (page == "login") showHideStatus = "showLogin";

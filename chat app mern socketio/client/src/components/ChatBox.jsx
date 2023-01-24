@@ -3,9 +3,19 @@ import React, { useContext, useState, useEffect } from "react";
 import { getMssg } from "../../utils/APIRoutes";
 import { ChatContext } from "./Home";
 
-export default function ChatBox() {
+export default function ChatBox({ socket }) {
 	const { username, chattingWith } = useContext(ChatContext);
 	const [messages, setMessages] = useState([]);
+	useEffect(() => {
+		socket.on("server-broadcast", (obj) => {
+			setMessages((prevMessages) => {
+				return [
+					...prevMessages,
+					{ mssg: obj.mssg, to: username, from: chattingWith },
+				];
+			});
+		});
+	}, []);
 	useEffect(() => {
 		async function temp() {
 			try {

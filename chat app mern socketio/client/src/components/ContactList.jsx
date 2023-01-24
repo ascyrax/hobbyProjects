@@ -4,12 +4,12 @@ import { useEffect } from "react";
 import { getUserContactList } from "../../utils/APIRoutes";
 import Contact from "./Contact";
 export default function ContactList({ username, contacts, setContacts }) {
-	console.log(contacts);
+	// console.log(contacts);
 	useEffect(() => {
 		async function getContactList() {
 			const payload = { username };
 			const serverResponse = await axios.post(getUserContactList, payload);
-			console.log(serverResponse.data);
+			// console.log(serverResponse.data);
 			if (serverResponse.data.status == true) {
 				setContacts(serverResponse.data.contactList);
 			}

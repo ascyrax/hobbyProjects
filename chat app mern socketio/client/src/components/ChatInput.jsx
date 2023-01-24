@@ -10,7 +10,7 @@ import { addMssg } from "../../utils/APIRoutes";
 
 import axios from "axios";
 
-export default function ChatInput() {
+export default function ChatInput({ socket }) {
 	const [chatInput, setChatInput] = useState("");
 	const [pickEmoji, setPickEmoji] = useState(false);
 	const { username, userAvatar, chattingWith, chatUserAvatar } =
@@ -52,14 +52,13 @@ export default function ChatInput() {
 	async function handleSubmit(e) {
 		e.preventDefault();
 		try {
+			socket.emit("text", { mssg: chatInput });
 			const payload = {
 				mssg: chatInput,
 				from: username,
 				to: chattingWith,
 			};
-			console.log(payload);
 			const serverResponse = await axios.post(addMssg, payload);
-			console.log(serverResponse);
 			if (serverResponse.data.status == true) {
 				setChatInput("");
 			}

@@ -1,12 +1,23 @@
-import React, { useState, useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Welcome from "./Welcome";
 import { ChatContext } from "./Home";
 import ChatHeader from "./ChatHeader";
 import ChatBox from "./ChatBox";
 import ChatInput from "./ChatInput";
+import { io } from "socket.io-client";
 export default function Chat() {
 	const { username, userAvatar, chattingWith, chatUserAvatar } =
 		useContext(ChatContext);
+	const [socket, setSocket] = useState({});
+	useEffect(() => {
+		const socket = io("http://localhost:3000");
+		if (socket) {
+			socket.on("connect", () => {
+				console.log("connected to the socket server with id = ", socket.id);
+			});
+			setSocket(socket);
+		}
+	}, []);
 
 	return (
 		<div className="chat">
@@ -16,8 +27,8 @@ export default function Chat() {
 			{chattingWith != "" && (
 				<>
 					<ChatHeader username={chattingWith} userAvatar={chatUserAvatar} />
-					<ChatBox />
-					<ChatInput />
+					<ChatBox socket={socket} />
+					<ChatInput socket={socket} />
 				</>
 			)}
 		</div>
