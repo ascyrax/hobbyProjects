@@ -112,12 +112,8 @@ async function getAvatar(req, res) {
 		res.send({ status: false });
 	}
 }
-function temp(req, res) {
-	res.send({ mssg: "temp was successful" });
-}
 
 module.exports = {
-	temp,
 	login,
 	register,
 	setAvatar,

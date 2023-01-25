@@ -6,11 +6,9 @@ const {
 	findUser,
 	getUserContactList,
 	getAvatar,
-	temp,
 } = require("../controllers/authController");
 
 authRouter
-	.get("/temp", temp)
 	.post("/register", register)
 	.post("/login", login)
 	.post("/setAvatar", setAvatar)

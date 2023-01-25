@@ -121,31 +121,24 @@ export default function Login({ toggleAuthState, page }) {
 	}
 	async function handleSubmit(e) {
 		e.preventDefault();
-		const serverRespone = await axios.get(`${host}/api/auth/temp`);
-		console.log(serverRespone.data);
-		serverRespone = await axios.post(getAvatar, { username: "ascyrax" });
-		console.log(serverRespone.data);
-		serverRespone = await axios.post(getUserContactList, {
-			username: "ascyrax",
-		});
-		console.log(serverRespone.data);
-		// if (handleValidation()) {
-		// 	let payload = {
-		// 		username: state.username,
-		// 		password: state.password,
-		// 	};
-		// 	try {
-		// 		let serverRespone = await axios.post(loginRoute, payload);
-		// 		if (serverRespone.data.status == true) {
-		// 			useToast("success", "Login Successful");
-		// 			saveUserInLocalStorage(serverRespone.data.userAvatar);
-		// 		} else {
-		// 			useToast("error", "Login Unsuccessful");
-		// 		}
-		// 	} catch (e) {
-		// 		console.log("error", e);
-		// 	}
-		// }
+
+		if (handleValidation()) {
+			let payload = {
+				username: state.username,
+				password: state.password,
+			};
+			try {
+				let serverRespone = await axios.post(loginRoute, payload);
+				if (serverRespone.data.status == true) {
+					useToast("success", "Login Successful");
+					saveUserInLocalStorage(serverRespone.data.userAvatar);
+				} else {
+					useToast("error", "Login Unsuccessful");
+				}
+			} catch (e) {
+				console.log("error", e);
+			}
+		}
 	}
 	function saveUserInLocalStorage(userAvatar) {
 		console.log(state);

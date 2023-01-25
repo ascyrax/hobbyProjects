@@ -38,14 +38,19 @@ app.use("/api/auth", authRouter);
 const { mssgRouter } = require("./routers/mssgRouter");
 app.use("/api/mssg", mssgRouter);
 
+app.use("/", (req, res) => {
+	res.send("<h1>server up & running</h1>");
+});
+
 // SOCKET
-const io = require("socket.io")(3000, {
+const io = require("socket.io")(server, {
 	cors: {
 		origin: ["http://localhost:5173", "https://herochat.netlify.app"],
 	},
 });
 
-io.on("connection", (socket) => {
+io.on("connect", (socket) => {
+	console.log(socket.id);
 	socket.on("text", (obj) => {
 		socket.broadcast.emit("server-broadcast", obj);
 	});
