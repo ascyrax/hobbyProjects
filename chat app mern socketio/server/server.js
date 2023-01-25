@@ -24,7 +24,6 @@ const server = app.listen(process.env.PORT || 4000, () => {
 // database connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", true);
-console.log(process.env.CLOUD_DB, process.env.PORT);
 mongoose.connect(
 	process.env.CLOUD_DB,
 	() => {

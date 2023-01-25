@@ -1,6 +1,7 @@
 const { userModel } = require("../models/userModel");
 
 async function login(req, res) {
+	console.log(req.body);
 	let user = await userModel.findOne(req.body);
 	// console.log("user", user);
 
@@ -18,6 +19,7 @@ async function login(req, res) {
 }
 
 async function register(req, res) {
+	console.log(req.body);
 	try {
 		let { username, email, password, password2 } = req.body;
 
@@ -48,6 +50,7 @@ async function register(req, res) {
 }
 
 async function setAvatar(req, res) {
+	console.log(req.body);
 	// console.log(req.body);
 
 	const { username, userAvatar } = req.body;
@@ -68,6 +71,7 @@ async function setAvatar(req, res) {
 }
 
 async function findUser(req, res) {
+	console.log(req.body);
 	// console.log(req.body);
 	const { username, usernameToFind } = req.body;
 	const user = await userModel.findOne({ username });
@@ -89,6 +93,7 @@ async function findUser(req, res) {
 }
 
 async function getUserContactList(req, res) {
+	console.log(req.body);
 	const { username } = req.body;
 	// console.log(username);
 	const user = await userModel.findOne({ username });
@@ -103,6 +108,7 @@ async function getUserContactList(req, res) {
 }
 
 async function getAvatar(req, res) {
+	console.log(req.body);
 	const { username } = req.body;
 	const user = await userModel.findOne({ username });
 
