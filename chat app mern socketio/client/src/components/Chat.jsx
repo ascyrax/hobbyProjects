@@ -10,15 +10,15 @@ export default function Chat() {
 	const { username, userAvatar, chattingWith, chatUserAvatar } =
 		useContext(ChatContext);
 	const [socket, setSocket] = useState({});
-	// useEffect(() => {
-	// 	const socket = io(hostSocketAddress);
-	// 	if (socket) {
-	// 		socket.on("connect", () => {
-	// 			console.log("connected to the socket server with id = ", socket.id);
-	// 		});
-	// 		setSocket(socket);
-	// 	}
-	// }, []);
+	useEffect(() => {
+		const socket = io(hostSocketAddress);
+		if (socket) {
+			socket.on("connect", () => {
+				console.log("connected to the socket server with id = ", socket.id);
+			});
+			setSocket(socket);
+		}
+	}, []);
 
 	return (
 		<div className="chat">

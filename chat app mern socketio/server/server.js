@@ -47,19 +47,19 @@ app.get("/", (req, res) => {
 });
 
 // SOCKET
-// const io = require("socket.io")(server, {
-// 	cors: {
-// 		origin: [
-// 			"http://localhost:5173",
-// 			"https://herochat.netlify.app",
-// 			"https://herochat.vercel.app",
-// 		],
-// 	},
-// });
+const io = require("socket.io")(server, {
+	cors: {
+		origin: [
+			"http://localhost:5173",
+			"https://herochat.netlify.app",
+			"https://herochat.vercel.app",
+		],
+	},
+});
 
-// io.on("connect", (socket) => {
-// 	console.log(socket.id);
-// 	socket.on("text", (obj) => {
-// 		socket.broadcast.emit("server-broadcast", obj);
-// 	});
-// });
+io.on("connect", (socket) => {
+	console.log(socket.id);
+	socket.on("text", (obj) => {
+		socket.broadcast.emit("server-broadcast", obj);
+	});
+});
