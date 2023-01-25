@@ -25,7 +25,11 @@ const server = app.listen(process.env.PORT, () => {
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", true);
 mongoose.connect(process.env.CLOUD_DB, {}, (e) => {
-	if (e) console.error("DATABASE CONNECTION ERROR \n", e);
+	if (e)
+		console.error(
+			`DATABASE CONNECTION ERROR :(:(:( \n ${process.env.CLOUD_DB}\n`,
+			e
+		);
 	else {
 		console.log("DATABASE CONNECTION SUCCESSFUL");
 	}
@@ -38,7 +42,7 @@ app.use("/api/auth", authRouter);
 const { mssgRouter } = require("./routers/mssgRouter");
 app.use("/api/mssg", mssgRouter);
 
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
 	res.send("<h1>server up & running</h1>");
 });
 
