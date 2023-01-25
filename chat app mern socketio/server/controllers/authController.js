@@ -2,19 +2,23 @@ const { userModel } = require("../models/userModel");
 
 async function login(req, res) {
 	console.log(req.body);
-	let user = await userModel.findOne(req.body);
-	// console.log("user", user);
+	try {
+		let user = await userModel.findOne(req.body);
+		// console.log("user", user);
 
-	if (user) {
-		res.send({
-			mssg: "login successful",
-			status: true,
-			userAvatar: user.userAvatar,
-		});
-		return;
-	} else {
-		res.send({ mssg: "No user found. Retry.", status: false });
-		return;
+		if (user) {
+			res.send({
+				mssg: "login successful",
+				status: true,
+				userAvatar: user.userAvatar,
+			});
+			return;
+		} else {
+			res.send({ mssg: "No user found. Retry.", status: false });
+			return;
+		}
+	} catch (e) {
+		console.log("ERROR LOGGING IN", e);
 	}
 }
 
@@ -45,7 +49,7 @@ async function register(req, res) {
 		});
 		return;
 	} catch (e) {
-		console.log("error", e);
+		console.log("ERROR REGISTERING", e);
 	}
 }
 
@@ -53,69 +57,84 @@ async function setAvatar(req, res) {
 	console.log(req.body);
 	// console.log(req.body);
 
-	const { username, userAvatar } = req.body;
+	try {
+		const { username, userAvatar } = req.body;
 
-	const user = await userModel.findOneAndUpdate(
-		{ username },
-		{
-			userAvatar,
-		}
-	);
+		const user = await userModel.findOneAndUpdate(
+			{ username },
+			{
+				userAvatar,
+			}
+		);
 
-	res.send({
-		mssg: "avatar set successfully",
-		status: true,
-		userAvatar: user.userAvatar,
-	});
-	return;
+		res.send({
+			mssg: "avatar set successfully",
+			status: true,
+			userAvatar: user.userAvatar,
+		});
+	} catch (e) {
+		console.log("ERROR SETTING AVATAR", e);
+	}
 }
 
 async function findUser(req, res) {
 	console.log(req.body);
 	// console.log(req.body);
-	const { username, usernameToFind } = req.body;
-	const user = await userModel.findOne({ username });
-	const userToFind = await userModel.findOne({ username: usernameToFind });
-	if (userToFind) {
-		const temp = [];
-		temp.push(userToFind.username);
-		temp.push(userToFind.userAvatar);
-		user.userContactList.push(temp);
-		await user.save();
-		res.send({
-			mssg: "user found",
-			status: true,
-			contactList: user.userContactList,
-		});
-	} else {
-		res.send({ mssg: "user not found", status: false });
+	try {
+		const { username, usernameToFind } = req.body;
+		const user = await userModel.findOne({ username });
+		const userToFind = await userModel.findOne({ username: usernameToFind });
+		if (userToFind) {
+			const temp = [];
+			temp.push(userToFind.username);
+			temp.push(userToFind.userAvatar);
+			user.userContactList.push(temp);
+			await user.save();
+			res.send({
+				mssg: "user found",
+				status: true,
+				contactList: user.userContactList,
+			});
+		} else {
+			res.send({ mssg: "user not found", status: false });
+		}
+	} catch (e) {
+		console.log("ERROR FINDING USER", e);
 	}
 }
 
 async function getUserContactList(req, res) {
 	console.log(req.body);
-	const { username } = req.body;
-	// console.log(username);
-	const user = await userModel.findOne({ username });
-	// console.log("getContactList", user);
+	try {
+		const { username } = req.body;
+		// console.log(username);
+		const user = await userModel.findOne({ username });
+		// console.log("getContactList", user);
 
-	if (user) {
-		const contactList = user.userContactList;
-		res.send({ status: true, contactList });
-	} else {
-		res.send({ status: false });
+		if (user) {
+			const contactList = user.userContactList;
+			res.send({ status: true, contactList });
+		} else {
+			res.send({ status: false });
+		}
+	} catch (e) {
+		console.log("ERROR GETTING CONTACT LIST", e);
 	}
 }
 
 async function getAvatar(req, res) {
 	console.log(req.body);
-	const { username } = req.body;
-	const user = await userModel.findOne({ username });
+	try {
+		const { username } = req.body;
+		const user = await userModel.findOne({ username });
 
-	if (user) {
-		res.send({ status: true, userAvatar: user.userAvatar });
-	} else {
-		res.send({ status: false });
+		if (user) {
+			res.send({ status: true, userAvatar: user.userAvatar });
+		} else {
+			res.send({ status: false });
+		}
+	} catch (e) {
+		console.log("ERROR GETTING AVATAR", e);
 	}
 }
 

@@ -1,9 +1,10 @@
 const { mssgModel } = require("../models/mssgModel");
 async function addMssg(req, res) {
-	const { mssg, from, to } = req.body;
-	const usersInvolved = [to, from];
-	usersInvolved.sort();
+	console.log(req.body);
 	try {
+		const { mssg, from, to } = req.body;
+		const usersInvolved = [to, from];
+		usersInvolved.sort();
 		const newMssg = await mssgModel.create({ mssg, from, to, usersInvolved });
 		if (newMssg) {
 			res.send({ status: true, mssg: "mssg was added to the database" });
@@ -11,19 +12,20 @@ async function addMssg(req, res) {
 			res.send({ status: false, mssg: "mssg was not added to the database" });
 		}
 	} catch (e) {
-		console.log("error", e);
+		console.log("ERROR ADDING MESSAGE", e);
 	}
 }
 
 async function getMssg(req, res) {
-	const { usersInvolved, to, from } = req.body;
+	console.log(req.body);
 	try {
+		const { usersInvolved, to, from } = req.body;
 		const messages = await mssgModel.find({ usersInvolved });
 		if (messages) {
 			res.send({ status: true, messages });
 		}
 	} catch (e) {
-		console.log("error", e);
+		console.log("ERROR GETTING MESSAGEES", e);
 	}
 }
 
