@@ -46,7 +46,7 @@ app.get("/", (req, res) => {
 	res.send("<h1>server up & running</h1>");
 });
 
-SOCKET;
+// SOCKET
 const io = require("socket.io")(server, {
 	cors: {
 		origin: [
