@@ -24,16 +24,16 @@ const server = app.listen(process.env.PORT, () => {
 // database connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", true);
-mongoose.connect(process.env.CLOUD_DB, {}, (e) => {
-	if (e)
-		console.error(
-			`DATABASE CONNECTION ERROR :(:(:( \n ${process.env.CLOUD_DB}\n`,
-			e
-		);
-	else {
+console.log(process.env.CLOUD_DB, process.env.PORT);
+mongoose.connect(
+	process.env.CLOUD_DB,
+	() => {
 		console.log("DATABASE CONNECTION SUCCESSFUL");
+	},
+	(e) => {
+		console.error(`DATABASE CONNECTION ERROR :(:(:(\n`, e);
 	}
-});
+);
 
 // routing
 const { authRouter } = require("./routers/authRouter");
