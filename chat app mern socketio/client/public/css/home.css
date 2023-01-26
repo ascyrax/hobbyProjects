@@ -83,6 +83,8 @@
 	align-items: center;
 
 	cursor: pointer;
+
+	border: 2px outset silver;
 }
 
 .userProfile .logout:hover {
@@ -263,7 +265,7 @@
 }
 .chatHeader .back-button {
 	border-radius: 50%;
-	border: 5px ridge goldenrod;
+	border: 5px inset goldenrod;
 	height: 50px;
 	width: 50px;
 	cursor: pointer;

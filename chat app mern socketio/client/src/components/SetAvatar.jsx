@@ -40,7 +40,7 @@ export default function SetAvatar() {
 		loading09,
 	];
 	useEffect(() => {
-		console.log("useEffect 1");
+		// console.log("useEffect 1");
 		if (!checkForLoggedIn()) {
 			navigate("/auth");
 		} else if (!checkForAvatarSet()) {

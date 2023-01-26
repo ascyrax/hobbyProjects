@@ -1,7 +1,7 @@
-export const host = "http://localhost:4000";
-// export const host = "https://herochatapi.onrender.com";
-export const hostSocketAddress = "http://localhost:4000";
-// export const hostSocketAddress = "https://herochatapi.onrender.com";
+// export const host = "http://localhost:4000";
+export const host = "https://herochatapi.onrender.com";
+// export const hostSocketAddress = "http://localhost:4000";
+export const hostSocketAddress = "https://herochatapi.onrender.com";
 export const registerRoute = `${host}/api/auth/register`;
 export const loginRoute = `${host}/api/auth/login`;
 export const setAvatarRoute = `${host}/api/auth/setAvatar`;
