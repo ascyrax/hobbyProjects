@@ -9,7 +9,15 @@ import { hostSocketAddress } from "../../utils/APIRoutes";
 export default function Chat() {
 	const { username, userAvatar, chattingWith, chatUserAvatar } =
 		useContext(ChatContext);
+	const [currentChat, setCurrentChat] = useState(chattingWith);
 	const [socket, setSocket] = useState({});
+	const [showOrHide, setShowOrHide] = useState(
+		chattingWith == "" ? "hide" : "show"
+	);
+	useEffect(() => {
+		setShowOrHide(chattingWith == "" ? "hide" : "show");
+		setCurrentChat(chattingWith);
+	}, [chattingWith]);
 	useEffect(() => {
 		const socket = io(hostSocketAddress);
 		if (socket) {
@@ -21,8 +29,8 @@ export default function Chat() {
 	}, []);
 
 	return (
-		<div className="chat">
-			{chattingWith == "" && (
+		<div className="chat" id={`chat-${showOrHide}`}>
+			{currentChat == "" && (
 				<Welcome username={username} userAvatar={userAvatar} />
 			)}
 			{chattingWith != "" && (

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Title from "./Title";
 import ContactList from "./ContactList";
 import NewContact from "./NewContact";
@@ -6,9 +6,16 @@ import UserProfile from "./UserProfile";
 import { ChatContext } from "./Home";
 export default function Contacts() {
 	const [contacts, setContacts] = useState([]);
-	const { username, userAvatar } = useContext(ChatContext);
+	const { username, userAvatar, chattingWith } = useContext(ChatContext);
+	const [showOrHide, setShowOrHide] = useState(
+		chattingWith == "" ? "show" : "hide"
+	);
+	useEffect(() => {
+		setShowOrHide(chattingWith == "" ? "show" : "hide");
+	}, [chattingWith]);
+
 	return (
-		<div className="contacts">
+		<div className="contacts" id={`contacts-${showOrHide}`}>
 			<Title username={username} />
 			<ContactList
 				username={username}

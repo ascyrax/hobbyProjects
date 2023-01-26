@@ -8,6 +8,7 @@ export default function Contact({ username, avatar }) {
 	useEffect(() => {
 		setSelected(chattingWith == username ? true : false);
 	}, [chattingWith]);
+
 	return (
 		<div
 			className={`contact ${selected ? "selected" : ""}`}

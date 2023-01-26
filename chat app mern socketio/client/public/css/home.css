@@ -22,15 +22,16 @@
 .title {
 	height: 15%;
 	width: 100%;
-	background-color: rgba(100, 130, 100, 0.9);
-
+	/* background-color: rgba(185, 106, 59, 0.9); */
+	background-image: linear-gradient(red, rgb(3, 92, 29));
+	color: whitesmoke;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
 }
 .title-img-container {
-	background-image: url("../images/title02.jpg");
+	background-image: url("../images/allmight01.jpg");
 	width: 60px;
 	height: 60px;
 	background-position: center;
@@ -57,6 +58,7 @@
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+	color: beige;
 }
 
 .userProfile-img-container {
@@ -96,6 +98,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	color: aliceblue;
 }
 
 .newContact .div-normal {
@@ -249,8 +252,21 @@
 	background-color: rgba(150, 50, 100, 0.9);
 	display: flex;
 	flex-direction: row;
-	justify-content: left;
+	justify-content: flex-start;
 	align-items: center;
+}
+.chatHeader .back-button-container {
+	width: 60%;
+	display: flex;
+	justify-content: flex-end;
+	padding-right: 1rem;
+}
+.chatHeader .back-button {
+	border-radius: 50%;
+	border: 5px ridge goldenrod;
+	height: 50px;
+	width: 50px;
+	cursor: pointer;
 }
 
 .chatHeader-img-container {
@@ -462,4 +478,59 @@
 	background-color: #1269bbcb;
 	width: 0.1rem;
 	border-radius: 1rem;
+}
+
+@media only screen and (max-width: 500px) {
+	.home {
+		background-color: red;
+	}
+	.contacts {
+		width: 100%;
+		height: 100vh;
+		background-color: rgba(10, 150, 100, 0.9);
+	}
+
+	.title-img-container {
+		background-image: url("../images/allmight01.jpg");
+		width: 120px;
+		height: 120px;
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		border-radius: 50%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.chat {
+		width: 60vw;
+		height: 90vh;
+		background-color: rgba(88, 136, 172, 0.95);
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		visibility: hidden;
+		position: absolute;
+		pointer-events: none;
+	}
+	#chat-hide {
+		width: 100vw;
+		height: 100vh;
+	}
+	#chat-show {
+		visibility: visible;
+		position: relative;
+		pointer-events: all;
+
+		width: 100vw;
+		height: 100vh;
+	}
+	#contacts-hide {
+		visibility: hidden;
+		position: absolute;
+		pointer-events: none;
+	}
 }
