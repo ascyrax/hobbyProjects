@@ -251,16 +251,23 @@
 
 		transform: translateX(0);
 	}
-
+	.register-toggler-top {
+		width: 50%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
 	.register-toggler .img-register-container {
 		height: 90%;
+		width: 50%;
 	}
 
 	#register-showRegister .form-Register {
 		margin-top: 1rem;
 	}
 }
-@media only screen and (max-width: 350px) {
+@media only screen and (max-width: 500px) {
 	#register-showRegister {
 		opacity: 1;
 		pointer-events: all;
