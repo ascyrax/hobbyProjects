@@ -52,7 +52,11 @@ export default function ChatInput({ socket }) {
 	async function handleSubmit(e) {
 		e.preventDefault();
 		try {
-			socket.emit("text", { mssg: chatInput });
+			socket.emit("text", {
+				mssg: chatInput,
+				from: username,
+				to: chattingWith,
+			});
 			const payload = {
 				mssg: chatInput,
 				from: username,

@@ -60,6 +60,6 @@ const io = require("socket.io")(server, {
 io.on("connect", (socket) => {
 	console.log(socket.id);
 	socket.on("text", (obj) => {
-		socket.broadcast.emit("server-broadcast", obj);
+		io.emit("server-broadcast", obj);
 	});
 });

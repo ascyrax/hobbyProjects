@@ -9,10 +9,7 @@ export default function ChatBox({ socket }) {
 	useEffect(() => {
 		socket.on("server-broadcast", (obj) => {
 			setMessages((prevMessages) => {
-				return [
-					...prevMessages,
-					{ mssg: obj.mssg, to: username, from: chattingWith },
-				];
+				return [...prevMessages, obj];
 			});
 		});
 	}, []);
