@@ -8,12 +8,12 @@
 .auth-register::before {
 	content: "";
 	background-image: linear-gradient(-45deg, #4481eb, #04befe);
-	width: 220vh;
-	height: 220vh;
+	width: 2000px;
+	height: 2000px;
 	position: absolute;
 	border-radius: 50%;
 
-	top: -110vh;
+	top: -900px;
 	left: 50vw;
 
 	transition: 2s ease-in-out;
@@ -23,14 +23,46 @@
 .auth-login::before {
 	content: "";
 	background-image: linear-gradient(-45deg, #4481eb, #04befe);
-	width: 220vh;
-	height: 220vh;
+	width: 2000px;
+	height: 2000px;
 	position: absolute;
 	border-radius: 50%;
 
-	top: -110vh;
-	left: calc(-1 * calc(220vh - 50vw));
+	top: -900px;
+	left: calc(-1 * (2000px - 50vw));
 
 	transition: 2s ease-in-out;
 	z-index: 5;
+}
+
+/* RESPONSIVENESS */
+@media only screen and (max-width: 700px) {
+	.auth-login::before {
+		content: "";
+		background-image: linear-gradient(-45deg, #4481eb, #04befe);
+		width: 2000px;
+		height: 2000px;
+		position: absolute;
+		border-radius: 50%;
+
+		top: calc(-1 * (2000px - 30vh));
+		left: -800px;
+
+		transition: 2s ease-in-out;
+		z-index: 5;
+	}
+	.auth-register::before {
+		content: "";
+		background-image: linear-gradient(-45deg, #4481eb, #04befe);
+		width: 2000px;
+		height: 2000px;
+		position: absolute;
+		border-radius: 50%;
+
+		top: 70vh;
+		left: -800px;
+
+		transition: 2s ease-in-out;
+		z-index: 5;
+	}
 }

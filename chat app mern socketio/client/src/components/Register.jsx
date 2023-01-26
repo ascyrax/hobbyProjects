@@ -30,8 +30,8 @@ export default function Register({ toggleAuthState, page }) {
 	return (
 		<>
 			<ToastContainer />
-			<div className={`register ${showHideStatus}`}>
-				<div className="register-left">
+			<div id={`register-${showHideStatus}`} className="register">
+				<div className="register-main">
 					<h1>Sign up</h1>
 					<form className="form-register" onSubmit={handleSubmit}>
 						<div className="input-field">
@@ -105,15 +105,18 @@ export default function Register({ toggleAuthState, page }) {
 					</div>
 				</div>
 			</div>
-			<div className={`register-right ${showHideStatus}`}>
-				<div className="register-right-top">
+			<div
+				id={`register-toggler-${showHideStatus}`}
+				className="register-toggler"
+			>
+				<div className="register-toggler-top">
 					<h1>Already Registered?</h1>
-					<button className="btn-signIn" onClick={handlePageToggle}>
+					<button className="btn-toggler" onClick={handlePageToggle}>
 						SIGN IN
 					</button>
 				</div>
-				<div className="register-right-bottom">
-					<img src="images/register.svg" className="img-right-register"></img>
+				<div className="img-register-container">
+					<img src="images/register.svg" className="img-register"></img>
 				</div>
 			</div>
 		</>

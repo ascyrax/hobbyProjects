@@ -16,27 +16,36 @@
 	pointer-events: none;
 }
 
-.login-left {
+.login-main {
+	width: 100%;
+	height: 100%;
+
 	display: flex;
 	flex-direction: column;
 
 	justify-content: center;
 	align-items: center;
 
-	width: 100%;
-	height: 100%;
-
-	padding: 1rem 2rem;
-
 	transition: 1s;
+	/* background-color: red; */
 }
 
-.login-left h1 {
-	font-size: 2rem;
+.login-main h1 {
+	height: 10%;
+	/* background-color: green; */
+	width: 100%;
 	color: rgba(0, 0, 0, 0.75);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	font-size: 2.5rem;
 }
 
-.login-left .form-login {
+.login-main .form-login {
+	/* background-color: yellow; */
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 
@@ -44,7 +53,18 @@
 	align-items: center;
 }
 
-.login-left .input-field {
+.login-main .div-links {
+	font-size: 0.75rem;
+	width: 100%;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/* background-color: rgb(44, 169, 201); */
+	margin-top: 1rem;
+}
+
+.login-main .input-field {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -56,7 +76,7 @@
 	color: rgba(0, 0, 0, 0.1);
 }
 
-.login-left .form-login .input-field .input {
+.login-main .form-login .input-field .input {
 	background-color: transparent;
 	outline: none;
 	border: none;
@@ -82,20 +102,11 @@
 	background-color: #1752b9;
 }
 
-.login-left .div-links {
-	font-size: 0.75rem;
-	margin-top: 1rem;
-	width: 100%;
-
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-.login-left .div-links .mssg {
+.login-main .div-links .mssg {
 	font-weight: bold;
 	color: rgba(0, 0, 0, 0.75);
 }
-.login-left .links {
+.login-main .links {
 	margin-top: 0.5rem;
 	display: flex;
 	flex-direction: row;
@@ -103,7 +114,7 @@
 	align-items: center;
 }
 
-.login-left .link {
+.login-main .link {
 	border: 1px solid gray;
 	border-radius: 50%;
 	width: 25px;
@@ -116,13 +127,13 @@
 	transition: 0.5s;
 }
 
-.login-left .link:hover {
+.login-main .link:hover {
 	color: whitesmoke;
 	background-color: rgba(17, 160, 226, 0.6);
 }
 
 /* right hand side */
-.login-right {
+.login-toggler {
 	width: 50vw;
 	height: 100%;
 
@@ -141,17 +152,26 @@
 
 	z-index: 6;
 }
-.login-right .right-top {
+.login-toggler-top {
+	width: 100%;
+	height: 20%;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 
 	font-size: 1rem;
 }
-
-.login-right-top .btn-signIn {
-	margin-top: 0.5rem;
+.img-login-container {
+	width: 100%;
+	height: 40%;
+}
+.img-login {
+	width: 100%;
+	height: 100%;
+}
+.login-toggler-top .btn-toggler {
+	margin-top: 1.5rem;
 	border-radius: 20px;
 	border: none;
 	padding: 0.3rem 1rem;
@@ -163,40 +183,70 @@
 	cursor: pointer;
 }
 
-.login-right .btn-signIn:hover {
+.login-toggler .btn-toggler:hover {
 	background-color: rgb(241, 237, 237);
 	color: rgb(30, 99, 177);
 }
-.login-right > .right-bottom {
-	width: 80%;
-	height: 50%;
-	/* background-image: url("../images/login.svg");
-	background-position: center;
-	background-size: contain;
-	background-repeat: no-repeat; */
 
-	margin-top: 3rem;
+.login-toggler-top h1 {
+	font-size: 3vh;
 }
-
-.img-right-login {
-	width: 100%;
-	height: 100%;
-}
-
-.login-right-top h1 {
-	font-size: 1rem;
-}
-
-/* circle */
 
 /* case when we need to hide the login part */
 
-.login.showLogin {
+#login-showLogin {
 	opacity: 1;
 	pointer-events: all;
 	left: 50vw;
 }
 
-.login-right.showLogin {
+#login-toggler-showLogin {
 	left: 0;
+}
+
+/* RESPONSIVENESS */
+@media only screen and (max-width: 700px) {
+	.login {
+		width: 100vw;
+		height: 70vh;
+
+		top: 0vh;
+	}
+	#login-showLogin {
+		opacity: 1;
+		pointer-events: all;
+		left: 10vw;
+		top: 30vh;
+	}
+	#login-toggler-showLogin {
+		left: 0;
+		top: 0;
+		/* background-color: red; */
+		width: 100%;
+		height: 30%;
+
+		display: flex;
+		flex-direction: row;
+
+		opacity: 1;
+		pointer-events: all;
+	}
+	.login-toggler {
+		width: 100vw;
+		height: 30vh;
+		opacity: 0;
+		pointer-events: none;
+		top: -30vh;
+		left: 0;
+
+		display: flex;
+		flex-direction: row;
+	}
+	.login-toggler .img-login-container {
+		height: 90%;
+	}
+
+	.login-showLogin .form-login {
+		margin-top: 1rem;
+	}
 }

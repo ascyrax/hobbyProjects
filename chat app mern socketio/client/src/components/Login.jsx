@@ -34,19 +34,19 @@ export default function Login({ toggleAuthState, page }) {
 	return (
 		<>
 			<ToastContainer />
-			<div className={`login-right ${showHideStatus}`}>
-				<div className="login-right-top">
-					<h1>Not logined Yet?</h1>
-					<button className="btn-signIn" onClick={handlePageToggle}>
+			<div id={`login-toggler-${showHideStatus}`} className="login-toggler">
+				<div className="login-toggler-top">
+					<h1>Not logged in Yet?</h1>
+					<button className="btn-toggler" onClick={handlePageToggle}>
 						SIGN UP
 					</button>
 				</div>
-				<div className="login-right-bottom">
-					<img src="images/login.svg" className="img-right-login"></img>
+				<div className="img-login-container">
+					<img src="images/login.svg" className="img-login"></img>
 				</div>
 			</div>
-			<div className={`login ${showHideStatus}`}>
-				<div className="login-left">
+			<div id={`login-${showHideStatus}`} className="login">
+				<div className="login-main">
 					<h1>Sign in</h1>
 					<form className="form-login" onSubmit={handleSubmit}>
 						<div className="input-field">

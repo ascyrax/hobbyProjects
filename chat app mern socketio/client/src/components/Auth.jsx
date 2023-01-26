@@ -23,7 +23,7 @@ export default function Auth() {
 		<div className={`auth auth-${state.page}`}>
 			<Register page={state.page} toggleAuthState={toggleAuthState} />
 			<Login page={state.page} toggleAuthState={toggleAuthState} />
-			<button
+			{/* <button
 				style={{
 					position: "absolute",
 					top: "90vh",
@@ -38,7 +38,7 @@ export default function Auth() {
 				}}
 			>
 				toggle
-			</button>
+			</button> */}
 		</div>
 	);
 }
