@@ -250,3 +250,224 @@
 		margin-top: 1rem;
 	}
 }
+
+@media only screen and (max-width: 350px) {
+	.login {
+		width: 100vw;
+		height: 70vh;
+
+		top: 0vh;
+		left: 0vw;
+	}
+	#login-showLogin {
+		opacity: 1;
+		pointer-events: all;
+		left: 0vw;
+		top: 30vh;
+	}
+	#login-toggler-showLogin {
+		left: 0;
+		top: 0;
+		/* background-color: red; */
+		width: 100%;
+		height: 30%;
+
+		display: flex;
+		flex-direction: row;
+
+		opacity: 1;
+		pointer-events: all;
+	}
+	.login-toggler {
+		width: 100vw;
+		height: 30vh;
+		opacity: 0;
+		pointer-events: none;
+		top: -30vh;
+		left: 0;
+
+		display: flex;
+		flex-direction: row;
+	}
+	.login-toggler .img-login-container {
+		height: 40%;
+		width: 20%;
+	}
+
+	.login-showLogin .form-login {
+		margin-top: 1rem;
+	}
+}
+
+@media only screen and (max-height: 525px) {
+	.login {
+		width: 100vw;
+		height: 70vh;
+
+		top: 0vh;
+		left: 0vw;
+	}
+	#login-showLogin {
+		opacity: 1;
+		pointer-events: all;
+		left: 0vw;
+		top: 30vh;
+	}
+	.login-main h1 {
+		height: 10%;
+		/* background-color: green; */
+		width: 100%;
+		color: rgba(0, 0, 0, 0.75);
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		font-size: 1.5rem;
+	}
+
+	.login-main .form-login {
+		/* background-color: yellow; */
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+
+		justify-content: space-around;
+		align-items: center;
+	}
+
+	.login-main .div-links {
+		font-size: 0.75rem;
+		width: 100%;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		/* background-color: rgb(44, 169, 201); */
+		margin-top: 0.25rem;
+	}
+
+	.login-main .input-field {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		margin-top: 0.2rem;
+		background-color: rgba(0, 0, 0, 0.1);
+		border-radius: 20px;
+		padding: 0.25rem 0.5rem;
+
+		color: rgba(0, 0, 0, 0.1);
+	}
+
+	.login-main .form-login .input-field .input {
+		background-color: transparent;
+		outline: none;
+		border: none;
+		width: 100%;
+		font-size: 0.85rem;
+		margin-left: 1rem;
+	}
+
+	.form-login .btn-login {
+		margin-top: 0.5rem;
+		border-radius: 20px;
+		border: none;
+		padding: 0.3rem 1rem;
+		background-color: #5995fd;
+		width: fit-content;
+		color: whitesmoke;
+
+		cursor: pointer;
+		transition: 0.5s;
+	}
+
+	.btn-login:hover {
+		background-color: #1752b9;
+	}
+
+	.login-main .div-links .mssg {
+		font-weight: bold;
+		color: rgba(0, 0, 0, 0.75);
+	}
+	.login-main .links {
+		margin-top: 0.5rem;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.login-main .link {
+		border: 1px solid gray;
+		border-radius: 50%;
+		width: 25px;
+		height: 25px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-left: 0.5rem;
+		color: rgba(0, 0, 0, 0.75);
+		transition: 0.5s;
+	}
+
+	.login-main .link:hover {
+		color: whitesmoke;
+		background-color: rgba(17, 160, 226, 0.6);
+	}
+	#login-toggler-showLogin {
+		left: 0;
+		top: 0;
+		/* background-color: red; */
+		width: 100%;
+		height: 20%;
+
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+		margin-top: 1rem;
+
+		opacity: 1;
+		pointer-events: all;
+	}
+	.login-toggler {
+		width: 100vw;
+		height: 20vh;
+		opacity: 0;
+		pointer-events: none;
+		top: -30vh;
+		left: 0;
+
+		display: flex;
+		flex-direction: row;
+	}
+	.login-toggler .img-login-container {
+		height: 40%;
+		width: 20%;
+	}
+
+	.login-showLogin .form-login {
+		margin-top: 1rem;
+	}
+
+	.login-toggler-top .btn-toggler {
+		margin-top: 0.1rem;
+		border-radius: 20px;
+		border: none;
+		padding: 0.1rem 0.5rem;
+		background-color: transparent;
+		width: fit-content;
+		color: whitesmoke;
+		border: 2px solid whitesmoke;
+
+		cursor: pointer;
+	}
+
+	.login-toggler .btn-toggler:hover {
+		background-color: rgb(241, 237, 237);
+		color: rgb(30, 99, 177);
+	}
+
+	.login-toggler-top h1 {
+		font-size: 1rem;
+	}
+}

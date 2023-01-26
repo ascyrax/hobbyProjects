@@ -260,3 +260,233 @@
 		margin-top: 1rem;
 	}
 }
+@media only screen and (max-width: 350px) {
+	#register-showRegister {
+		opacity: 1;
+		pointer-events: all;
+		left: 0vw;
+
+		width: 100vw;
+		height: 70vh;
+		bottom: 30vh;
+
+		transition: 1s;
+		transition-delay: 0.5s;
+	}
+	.register {
+		opacity: 0;
+		pointer-events: none;
+		left: 0vw;
+		width: 100vw;
+
+		bottom: -30vh;
+		transition: 1s;
+		transition-delay: 0.5s;
+		transform: translateX(0);
+	}
+	#register-toggler-showRegister {
+		left: 0;
+		top: 70vh;
+		width: 100%;
+		height: 30%;
+
+		display: flex;
+		flex-direction: row;
+
+		transition: 1s;
+		transition-delay: 0.5s;
+	}
+	.register-toggler {
+		left: 0;
+		top: 100vh;
+		width: 100vw;
+		height: 30%;
+
+		display: flex;
+		flex-direction: row;
+
+		transform: translateX(0);
+	}
+
+	.register-toggler .img-register-container {
+		height: 30%;
+		width: 20%;
+	}
+
+	#register-showRegister .form-Register {
+		margin-top: 1rem;
+	}
+}
+
+@media only screen and (max-height: 525px) {
+	#register-showRegister {
+		opacity: 1;
+		pointer-events: all;
+		left: 0vw;
+
+		width: 100vw;
+		height: 70vh;
+		bottom: 30vh;
+
+		transition: 1s;
+		transition-delay: 0.5s;
+	}
+	.register {
+		opacity: 0;
+		pointer-events: none;
+		left: 0vw;
+		width: 100vw;
+
+		bottom: -30vh;
+		transition: 1s;
+		transition-delay: 0.5s;
+		transform: translateX(0);
+	}
+	.register-main .input-field {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		margin-top: 0.1rem;
+		background-color: rgba(0, 0, 0, 0.1);
+		border-radius: 20px;
+		padding: 0.25rem 0.5rem;
+
+		color: rgba(0, 0, 0, 0.1);
+	}
+
+	.register-main .form-register .input-field .input {
+		background-color: transparent;
+		outline: none;
+		border: none;
+		width: 100%;
+		font-size: 0.75rem;
+		margin-left: 1rem;
+	}
+
+	.form-register .btn-register {
+		margin-top: 0.25rem;
+		border-radius: 20px;
+		border: none;
+		padding: 0.1rem 0.5rem;
+		background-color: #5995fd;
+		width: fit-content;
+		color: whitesmoke;
+
+		cursor: pointer;
+		transition: 0.5s;
+	}
+
+	.register-main .div-links {
+		font-size: 0.75rem;
+		margin-top: 0.25rem;
+		width: 100%;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.register-main .div-links .mssg {
+		font-weight: bold;
+		color: rgba(0, 0, 0, 0.75);
+	}
+	.register-main .links {
+		margin-top: 0.25rem;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.register-main .link {
+		border: 1px solid gray;
+		border-radius: 50%;
+		width: 25px;
+		height: 25px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-left: 0.5rem;
+		color: rgba(0, 0, 0, 0.75);
+		transition: 0.5s;
+	}
+
+	#register-toggler-showRegister {
+		left: 0;
+		top: 80vh;
+		width: 100%;
+		height: 20%;
+
+		display: flex;
+		flex-direction: row;
+
+		transition: 1s;
+		transition-delay: 0.5s;
+	}
+	.register-toggler {
+		left: 0;
+		top: 100vh;
+		width: 100vw;
+		height: 20%;
+
+		display: flex;
+		flex-direction: row;
+
+		transform: translateX(0);
+	}
+
+	.register-toggler .img-register-container {
+		height: 30%;
+		width: 20%;
+	}
+
+	.register-toggler .right-top {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		font-size: 1rem;
+	}
+
+	.register-toggler-top .btn-toggler {
+		margin-top: 0rem;
+		border-radius: 20px;
+		border: none;
+		padding: 0.1rem 0.5rem;
+		background-color: transparent;
+		width: fit-content;
+		color: whitesmoke;
+		border: 2px solid whitesmoke;
+
+		font-size: 0.75rem;
+
+		cursor: pointer;
+		transition: 0.5s;
+	}
+
+	.register-toggler .btn-toggler:hover {
+		background-color: rgb(241, 237, 237);
+		color: rgb(30, 99, 177);
+	}
+	.register-toggler > .right-bottom {
+		width: 80%;
+		height: 50%;
+		/* background-image: url("../images/register.svg");
+		background-position: center;
+		background-size: contain;
+		background-repeat: no-repeat; */
+
+		margin-top: 0rem;
+	}
+	.img-register-container {
+		height: 40%;
+	}
+	.img-register {
+		height: 100%;
+		width: 100%;
+	}
+
+	.register-toggler-top h1 {
+		font-size: 0.75rem;
+	}
+}
