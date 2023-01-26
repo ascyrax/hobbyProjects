@@ -90,7 +90,9 @@ export default function SetAvatar() {
 								key={index}
 							>
 								<img
-									className={`${selectedAvatar == index ? "selected" : ""}`}
+									className={`img-avatar ${
+										selectedAvatar == index ? "selected" : ""
+									}`}
 									src={`data:image/svg+xml;base64,${avatar}`}
 									onClick={() => {
 										handleAvatarSelect(index);
