@@ -1,0 +1,136 @@
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	color: rgba(0, 0, 0, 0.6);
+	box-sizing: border-box;
+}
+
+body {
+	background-color: aquamarine;
+}
+
+#root {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+/* HEAD */
+.head-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+	height: 25vh;
+	max-height: 125px;
+}
+
+/* FORM */
+.form-container {
+	height: 40vh;
+	max-height: 150px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	margin-top: 5vh;
+}
+.form {
+	width: 70vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.input {
+	cursor: text;
+	outline: none;
+	border: none;
+	padding: 0.5rem 2rem 0.5rem 0.5rem;
+	border-radius: 5px;
+
+	box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.25);
+	width: 100%;
+}
+
+.input::placeholder {
+	color: rgba(0, 0, 0, 0.6);
+}
+
+.hide {
+	display: none;
+	pointer-events: none;
+	position: absolute;
+}
+
+#note-heading {
+	border-bottom: none;
+	box-shadow: none;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+#note-body {
+	border-top: none;
+	box-shadow: none;
+	border-radius: 0;
+}
+
+.form-detailed {
+	box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.25);
+	border-radius: 5px;
+}
+
+.buttons-container {
+	background-color: white;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	padding: 0.25rem 0.25rem;
+}
+.btn {
+	width: 100px;
+	height: 30px;
+	border-radius: 5px;
+	border: 0;
+	cursor: pointer;
+}
+.btn-submit {
+	color: white;
+	background-color: rgb(13, 117, 214);
+}
+.btn-close {
+	background-color: rgba(0, 0, 0, 0.1);
+	margin-left: 5px;
+}
+/* NOTE */
+.notes-container {
+	display: flex;
+	flex-direction: row;
+
+	justify-content: space-around;
+	align-items: center;
+
+	width: 80vw;
+	flex-wrap: wrap;
+}
+
+.note {
+	width: 19vw;
+	background-color: whitesmoke;
+	height: 125px;
+	border-radius: 5px;
+	overflow-y: auto;
+	flex-wrap: wrap;
+	word-break: break-all;
+
+	margin-top: 15px;
+	padding: 10px;
+	margin-left: 10px;
+}
